@@ -1,0 +1,550 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		15BFA7241CB1A49600FAB4D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BFA7231CB1A49600FAB4D1 /* AppDelegate.swift */; };
+		15BFA7261CB1A49600FAB4D1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BFA7251CB1A49600FAB4D1 /* ViewController.swift */; };
+		15BFA7291CB1A49600FAB4D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15BFA7271CB1A49600FAB4D1 /* Main.storyboard */; };
+		15BFA72C1CB1A49600FAB4D1 /* MMDA_Project2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 15BFA72A1CB1A49600FAB4D1 /* MMDA_Project2.xcdatamodeld */; };
+		15BFA72E1CB1A49600FAB4D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15BFA72D1CB1A49600FAB4D1 /* Assets.xcassets */; };
+		15BFA7311CB1A49600FAB4D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15BFA72F1CB1A49600FAB4D1 /* LaunchScreen.storyboard */; };
+		15BFA73C1CB1A49600FAB4D1 /* MMDA_Project2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BFA73B1CB1A49600FAB4D1 /* MMDA_Project2Tests.swift */; };
+		15BFA7471CB1A49700FAB4D1 /* MMDA_Project2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BFA7461CB1A49700FAB4D1 /* MMDA_Project2UITests.swift */; };
+		15BFA7551CB1A85800FAB4D1 /* MainActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BFA7541CB1A85800FAB4D1 /* MainActivityViewController.swift */; };
+		15BFA7571CB1A8C200FAB4D1 /* ByActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BFA7561CB1A8C200FAB4D1 /* ByActivityViewController.swift */; };
+		15BFA7591CB1A8E400FAB4D1 /* ByDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BFA7581CB1A8E400FAB4D1 /* ByDateViewController.swift */; };
+		15BFA75B1CB1AE5C00FAB4D1 /* AddActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BFA75A1CB1AE5C00FAB4D1 /* AddActivityViewController.swift */; };
+		15BFA75D1CB1B26E00FAB4D1 /* EditActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BFA75C1CB1B26E00FAB4D1 /* EditActivityViewController.swift */; };
+		15BFA75F1CB1BF2400FAB4D1 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BFA75E1CB1BF2400FAB4D1 /* Activity.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		15BFA7381CB1A49600FAB4D1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 15BFA7181CB1A49600FAB4D1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 15BFA71F1CB1A49600FAB4D1;
+			remoteInfo = "MMDA-Project2";
+		};
+		15BFA7431CB1A49700FAB4D1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 15BFA7181CB1A49600FAB4D1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 15BFA71F1CB1A49600FAB4D1;
+			remoteInfo = "MMDA-Project2";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		15BFA7201CB1A49600FAB4D1 /* MMDA-Project2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MMDA-Project2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		15BFA7231CB1A49600FAB4D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		15BFA7251CB1A49600FAB4D1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		15BFA7281CB1A49600FAB4D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		15BFA72B1CB1A49600FAB4D1 /* MMDA_Project2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MMDA_Project2.xcdatamodel; sourceTree = "<group>"; };
+		15BFA72D1CB1A49600FAB4D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		15BFA7301CB1A49600FAB4D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		15BFA7321CB1A49600FAB4D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		15BFA7371CB1A49600FAB4D1 /* MMDA-Project2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MMDA-Project2Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		15BFA73B1CB1A49600FAB4D1 /* MMDA_Project2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMDA_Project2Tests.swift; sourceTree = "<group>"; };
+		15BFA73D1CB1A49600FAB4D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		15BFA7421CB1A49700FAB4D1 /* MMDA-Project2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MMDA-Project2UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		15BFA7461CB1A49700FAB4D1 /* MMDA_Project2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMDA_Project2UITests.swift; sourceTree = "<group>"; };
+		15BFA7481CB1A49700FAB4D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		15BFA7541CB1A85800FAB4D1 /* MainActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainActivityViewController.swift; sourceTree = "<group>"; };
+		15BFA7561CB1A8C200FAB4D1 /* ByActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ByActivityViewController.swift; sourceTree = "<group>"; };
+		15BFA7581CB1A8E400FAB4D1 /* ByDateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ByDateViewController.swift; sourceTree = "<group>"; };
+		15BFA75A1CB1AE5C00FAB4D1 /* AddActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddActivityViewController.swift; sourceTree = "<group>"; };
+		15BFA75C1CB1B26E00FAB4D1 /* EditActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditActivityViewController.swift; sourceTree = "<group>"; };
+		15BFA75E1CB1BF2400FAB4D1 /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		15BFA71D1CB1A49600FAB4D1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		15BFA7341CB1A49600FAB4D1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		15BFA73F1CB1A49700FAB4D1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		15BFA7171CB1A49600FAB4D1 = {
+			isa = PBXGroup;
+			children = (
+				15BFA7221CB1A49600FAB4D1 /* MMDA-Project2 */,
+				15BFA73A1CB1A49600FAB4D1 /* MMDA-Project2Tests */,
+				15BFA7451CB1A49700FAB4D1 /* MMDA-Project2UITests */,
+				15BFA7211CB1A49600FAB4D1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		15BFA7211CB1A49600FAB4D1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				15BFA7201CB1A49600FAB4D1 /* MMDA-Project2.app */,
+				15BFA7371CB1A49600FAB4D1 /* MMDA-Project2Tests.xctest */,
+				15BFA7421CB1A49700FAB4D1 /* MMDA-Project2UITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		15BFA7221CB1A49600FAB4D1 /* MMDA-Project2 */ = {
+			isa = PBXGroup;
+			children = (
+				15BFA7231CB1A49600FAB4D1 /* AppDelegate.swift */,
+				15BFA7251CB1A49600FAB4D1 /* ViewController.swift */,
+				15BFA7271CB1A49600FAB4D1 /* Main.storyboard */,
+				15BFA75E1CB1BF2400FAB4D1 /* Activity.swift */,
+				15BFA75C1CB1B26E00FAB4D1 /* EditActivityViewController.swift */,
+				15BFA75A1CB1AE5C00FAB4D1 /* AddActivityViewController.swift */,
+				15BFA7581CB1A8E400FAB4D1 /* ByDateViewController.swift */,
+				15BFA7561CB1A8C200FAB4D1 /* ByActivityViewController.swift */,
+				15BFA7541CB1A85800FAB4D1 /* MainActivityViewController.swift */,
+				15BFA72D1CB1A49600FAB4D1 /* Assets.xcassets */,
+				15BFA72F1CB1A49600FAB4D1 /* LaunchScreen.storyboard */,
+				15BFA7321CB1A49600FAB4D1 /* Info.plist */,
+				15BFA72A1CB1A49600FAB4D1 /* MMDA_Project2.xcdatamodeld */,
+			);
+			path = "MMDA-Project2";
+			sourceTree = "<group>";
+		};
+		15BFA73A1CB1A49600FAB4D1 /* MMDA-Project2Tests */ = {
+			isa = PBXGroup;
+			children = (
+				15BFA73B1CB1A49600FAB4D1 /* MMDA_Project2Tests.swift */,
+				15BFA73D1CB1A49600FAB4D1 /* Info.plist */,
+			);
+			path = "MMDA-Project2Tests";
+			sourceTree = "<group>";
+		};
+		15BFA7451CB1A49700FAB4D1 /* MMDA-Project2UITests */ = {
+			isa = PBXGroup;
+			children = (
+				15BFA7461CB1A49700FAB4D1 /* MMDA_Project2UITests.swift */,
+				15BFA7481CB1A49700FAB4D1 /* Info.plist */,
+			);
+			path = "MMDA-Project2UITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		15BFA71F1CB1A49600FAB4D1 /* MMDA-Project2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 15BFA74B1CB1A49700FAB4D1 /* Build configuration list for PBXNativeTarget "MMDA-Project2" */;
+			buildPhases = (
+				15BFA71C1CB1A49600FAB4D1 /* Sources */,
+				15BFA71D1CB1A49600FAB4D1 /* Frameworks */,
+				15BFA71E1CB1A49600FAB4D1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MMDA-Project2";
+			productName = "MMDA-Project2";
+			productReference = 15BFA7201CB1A49600FAB4D1 /* MMDA-Project2.app */;
+			productType = "com.apple.product-type.application";
+		};
+		15BFA7361CB1A49600FAB4D1 /* MMDA-Project2Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 15BFA74E1CB1A49700FAB4D1 /* Build configuration list for PBXNativeTarget "MMDA-Project2Tests" */;
+			buildPhases = (
+				15BFA7331CB1A49600FAB4D1 /* Sources */,
+				15BFA7341CB1A49600FAB4D1 /* Frameworks */,
+				15BFA7351CB1A49600FAB4D1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				15BFA7391CB1A49600FAB4D1 /* PBXTargetDependency */,
+			);
+			name = "MMDA-Project2Tests";
+			productName = "MMDA-Project2Tests";
+			productReference = 15BFA7371CB1A49600FAB4D1 /* MMDA-Project2Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		15BFA7411CB1A49700FAB4D1 /* MMDA-Project2UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 15BFA7511CB1A49700FAB4D1 /* Build configuration list for PBXNativeTarget "MMDA-Project2UITests" */;
+			buildPhases = (
+				15BFA73E1CB1A49700FAB4D1 /* Sources */,
+				15BFA73F1CB1A49700FAB4D1 /* Frameworks */,
+				15BFA7401CB1A49700FAB4D1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				15BFA7441CB1A49700FAB4D1 /* PBXTargetDependency */,
+			);
+			name = "MMDA-Project2UITests";
+			productName = "MMDA-Project2UITests";
+			productReference = 15BFA7421CB1A49700FAB4D1 /* MMDA-Project2UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		15BFA7181CB1A49600FAB4D1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Stephanie Cleland";
+				TargetAttributes = {
+					15BFA71F1CB1A49600FAB4D1 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					15BFA7361CB1A49600FAB4D1 = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = 15BFA71F1CB1A49600FAB4D1;
+					};
+					15BFA7411CB1A49700FAB4D1 = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = 15BFA71F1CB1A49600FAB4D1;
+					};
+				};
+			};
+			buildConfigurationList = 15BFA71B1CB1A49600FAB4D1 /* Build configuration list for PBXProject "MMDA-Project2" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 15BFA7171CB1A49600FAB4D1;
+			productRefGroup = 15BFA7211CB1A49600FAB4D1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				15BFA71F1CB1A49600FAB4D1 /* MMDA-Project2 */,
+				15BFA7361CB1A49600FAB4D1 /* MMDA-Project2Tests */,
+				15BFA7411CB1A49700FAB4D1 /* MMDA-Project2UITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		15BFA71E1CB1A49600FAB4D1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				15BFA7311CB1A49600FAB4D1 /* LaunchScreen.storyboard in Resources */,
+				15BFA72E1CB1A49600FAB4D1 /* Assets.xcassets in Resources */,
+				15BFA7291CB1A49600FAB4D1 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		15BFA7351CB1A49600FAB4D1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		15BFA7401CB1A49700FAB4D1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		15BFA71C1CB1A49600FAB4D1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				15BFA7571CB1A8C200FAB4D1 /* ByActivityViewController.swift in Sources */,
+				15BFA7551CB1A85800FAB4D1 /* MainActivityViewController.swift in Sources */,
+				15BFA75D1CB1B26E00FAB4D1 /* EditActivityViewController.swift in Sources */,
+				15BFA7261CB1A49600FAB4D1 /* ViewController.swift in Sources */,
+				15BFA7591CB1A8E400FAB4D1 /* ByDateViewController.swift in Sources */,
+				15BFA75B1CB1AE5C00FAB4D1 /* AddActivityViewController.swift in Sources */,
+				15BFA75F1CB1BF2400FAB4D1 /* Activity.swift in Sources */,
+				15BFA7241CB1A49600FAB4D1 /* AppDelegate.swift in Sources */,
+				15BFA72C1CB1A49600FAB4D1 /* MMDA_Project2.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		15BFA7331CB1A49600FAB4D1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				15BFA73C1CB1A49600FAB4D1 /* MMDA_Project2Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		15BFA73E1CB1A49700FAB4D1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				15BFA7471CB1A49700FAB4D1 /* MMDA_Project2UITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		15BFA7391CB1A49600FAB4D1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 15BFA71F1CB1A49600FAB4D1 /* MMDA-Project2 */;
+			targetProxy = 15BFA7381CB1A49600FAB4D1 /* PBXContainerItemProxy */;
+		};
+		15BFA7441CB1A49700FAB4D1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 15BFA71F1CB1A49600FAB4D1 /* MMDA-Project2 */;
+			targetProxy = 15BFA7431CB1A49700FAB4D1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		15BFA7271CB1A49600FAB4D1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				15BFA7281CB1A49600FAB4D1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		15BFA72F1CB1A49600FAB4D1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				15BFA7301CB1A49600FAB4D1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		15BFA7491CB1A49700FAB4D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		15BFA74A1CB1A49700FAB4D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		15BFA74C1CB1A49700FAB4D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "MMDA-Project2/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.tufts.cs.MMDA-Project2";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		15BFA74D1CB1A49700FAB4D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "MMDA-Project2/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.tufts.cs.MMDA-Project2";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		15BFA74F1CB1A49700FAB4D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "MMDA-Project2Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.tufts.cs.MMDA-Project2Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MMDA-Project2.app/MMDA-Project2";
+			};
+			name = Debug;
+		};
+		15BFA7501CB1A49700FAB4D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "MMDA-Project2Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.tufts.cs.MMDA-Project2Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MMDA-Project2.app/MMDA-Project2";
+			};
+			name = Release;
+		};
+		15BFA7521CB1A49700FAB4D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "MMDA-Project2UITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.tufts.cs.MMDA-Project2UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "MMDA-Project2";
+			};
+			name = Debug;
+		};
+		15BFA7531CB1A49700FAB4D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "MMDA-Project2UITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.tufts.cs.MMDA-Project2UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "MMDA-Project2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		15BFA71B1CB1A49600FAB4D1 /* Build configuration list for PBXProject "MMDA-Project2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				15BFA7491CB1A49700FAB4D1 /* Debug */,
+				15BFA74A1CB1A49700FAB4D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		15BFA74B1CB1A49700FAB4D1 /* Build configuration list for PBXNativeTarget "MMDA-Project2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				15BFA74C1CB1A49700FAB4D1 /* Debug */,
+				15BFA74D1CB1A49700FAB4D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		15BFA74E1CB1A49700FAB4D1 /* Build configuration list for PBXNativeTarget "MMDA-Project2Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				15BFA74F1CB1A49700FAB4D1 /* Debug */,
+				15BFA7501CB1A49700FAB4D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		15BFA7511CB1A49700FAB4D1 /* Build configuration list for PBXNativeTarget "MMDA-Project2UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				15BFA7521CB1A49700FAB4D1 /* Debug */,
+				15BFA7531CB1A49700FAB4D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		15BFA72A1CB1A49600FAB4D1 /* MMDA_Project2.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				15BFA72B1CB1A49600FAB4D1 /* MMDA_Project2.xcdatamodel */,
+			);
+			currentVersion = 15BFA72B1CB1A49600FAB4D1 /* MMDA_Project2.xcdatamodel */;
+			path = MMDA_Project2.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 15BFA7181CB1A49600FAB4D1 /* Project object */;
+}
