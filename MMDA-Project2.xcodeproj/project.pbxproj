@@ -22,6 +22,13 @@
 		15BFA75D1CB1B26E00FAB4D1 /* EditActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BFA75C1CB1B26E00FAB4D1 /* EditActivityViewController.swift */; };
 		15BFA75F1CB1BF2400FAB4D1 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BFA75E1CB1BF2400FAB4D1 /* Activity.swift */; };
 		15BFA7611CB5B3FF00FAB4D1 /* feedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BFA7601CB5B3FF00FAB4D1 /* feedbackViewController.swift */; };
+		15BFA7691CB5CC4200FAB4D1 /* EPCalendarCell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BFA7621CB5CC4200FAB4D1 /* EPCalendarCell1.swift */; };
+		15BFA76A1CB5CC4200FAB4D1 /* EPCalendarConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BFA7631CB5CC4200FAB4D1 /* EPCalendarConstants.swift */; };
+		15BFA76B1CB5CC4200FAB4D1 /* EPCalendarCell1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15BFA7641CB5CC4200FAB4D1 /* EPCalendarCell1.xib */; };
+		15BFA76C1CB5CC4200FAB4D1 /* EPCalendarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BFA7651CB5CC4200FAB4D1 /* EPCalendarHeaderView.swift */; };
+		15BFA76D1CB5CC4200FAB4D1 /* EPCalendarHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15BFA7661CB5CC4200FAB4D1 /* EPCalendarHeaderView.xib */; };
+		15BFA76E1CB5CC4200FAB4D1 /* EPCalendarPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BFA7671CB5CC4200FAB4D1 /* EPCalendarPicker.swift */; };
+		15BFA76F1CB5CC4200FAB4D1 /* EPExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BFA7681CB5CC4200FAB4D1 /* EPExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +70,13 @@
 		15BFA75C1CB1B26E00FAB4D1 /* EditActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditActivityViewController.swift; sourceTree = "<group>"; };
 		15BFA75E1CB1BF2400FAB4D1 /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		15BFA7601CB5B3FF00FAB4D1 /* feedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = feedbackViewController.swift; sourceTree = "<group>"; };
+		15BFA7621CB5CC4200FAB4D1 /* EPCalendarCell1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EPCalendarCell1.swift; sourceTree = "<group>"; };
+		15BFA7631CB5CC4200FAB4D1 /* EPCalendarConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EPCalendarConstants.swift; sourceTree = "<group>"; };
+		15BFA7641CB5CC4200FAB4D1 /* EPCalendarCell1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EPCalendarCell1.xib; sourceTree = "<group>"; };
+		15BFA7651CB5CC4200FAB4D1 /* EPCalendarHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EPCalendarHeaderView.swift; sourceTree = "<group>"; };
+		15BFA7661CB5CC4200FAB4D1 /* EPCalendarHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EPCalendarHeaderView.xib; sourceTree = "<group>"; };
+		15BFA7671CB5CC4200FAB4D1 /* EPCalendarPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EPCalendarPicker.swift; sourceTree = "<group>"; };
+		15BFA7681CB5CC4200FAB4D1 /* EPExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EPExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				15BFA7231CB1A49600FAB4D1 /* AppDelegate.swift */,
+				15BFA7701CB5CD1E00FAB4D1 /* EPCalenderPicker */,
 				15BFA7251CB1A49600FAB4D1 /* ViewController.swift */,
 				15BFA7271CB1A49600FAB4D1 /* Main.storyboard */,
 				15BFA7601CB5B3FF00FAB4D1 /* feedbackViewController.swift */,
@@ -147,6 +162,20 @@
 				15BFA7481CB1A49700FAB4D1 /* Info.plist */,
 			);
 			path = "MMDA-Project2UITests";
+			sourceTree = "<group>";
+		};
+		15BFA7701CB5CD1E00FAB4D1 /* EPCalenderPicker */ = {
+			isa = PBXGroup;
+			children = (
+				15BFA7621CB5CC4200FAB4D1 /* EPCalendarCell1.swift */,
+				15BFA7631CB5CC4200FAB4D1 /* EPCalendarConstants.swift */,
+				15BFA7641CB5CC4200FAB4D1 /* EPCalendarCell1.xib */,
+				15BFA7651CB5CC4200FAB4D1 /* EPCalendarHeaderView.swift */,
+				15BFA7661CB5CC4200FAB4D1 /* EPCalendarHeaderView.xib */,
+				15BFA7671CB5CC4200FAB4D1 /* EPCalendarPicker.swift */,
+				15BFA7681CB5CC4200FAB4D1 /* EPExtensions.swift */,
+			);
+			name = EPCalenderPicker;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,9 +283,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15BFA76B1CB5CC4200FAB4D1 /* EPCalendarCell1.xib in Resources */,
 				15BFA7311CB1A49600FAB4D1 /* LaunchScreen.storyboard in Resources */,
 				15BFA72E1CB1A49600FAB4D1 /* Assets.xcassets in Resources */,
 				15BFA7291CB1A49600FAB4D1 /* Main.storyboard in Resources */,
+				15BFA76D1CB5CC4200FAB4D1 /* EPCalendarHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +313,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				15BFA7571CB1A8C200FAB4D1 /* ByActivityViewController.swift in Sources */,
+				15BFA76C1CB5CC4200FAB4D1 /* EPCalendarHeaderView.swift in Sources */,
+				15BFA76E1CB5CC4200FAB4D1 /* EPCalendarPicker.swift in Sources */,
 				15BFA7611CB5B3FF00FAB4D1 /* feedbackViewController.swift in Sources */,
 				15BFA7551CB1A85800FAB4D1 /* MainActivityViewController.swift in Sources */,
 				15BFA75D1CB1B26E00FAB4D1 /* EditActivityViewController.swift in Sources */,
@@ -289,7 +322,10 @@
 				15BFA7591CB1A8E400FAB4D1 /* ByDateViewController.swift in Sources */,
 				15BFA75B1CB1AE5C00FAB4D1 /* AddActivityViewController.swift in Sources */,
 				15BFA75F1CB1BF2400FAB4D1 /* Activity.swift in Sources */,
+				15BFA76F1CB5CC4200FAB4D1 /* EPExtensions.swift in Sources */,
+				15BFA76A1CB5CC4200FAB4D1 /* EPCalendarConstants.swift in Sources */,
 				15BFA7241CB1A49600FAB4D1 /* AppDelegate.swift in Sources */,
+				15BFA7691CB5CC4200FAB4D1 /* EPCalendarCell1.swift in Sources */,
 				15BFA72C1CB1A49600FAB4D1 /* MMDA_Project2.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
