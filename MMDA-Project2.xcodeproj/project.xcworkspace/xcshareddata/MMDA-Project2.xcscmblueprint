@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "98BA7C251F9E13B7D56C04AE38E2A3067A46117B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "417CA45786FCE9DF4279AE01354556DEF51FF6F8" : 0,
+    "98BA7C251F9E13B7D56C04AE38E2A3067A46117B" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "899BA16A-9462-4E81-99AB-E219E9F58964",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "417CA45786FCE9DF4279AE01354556DEF51FF6F8" : "",
+    "98BA7C251F9E13B7D56C04AE38E2A3067A46117B" : "MMDA-Project2\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "MMDA-Project2",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "MMDA-Project2.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/stephcleland\/CrashDefense.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "417CA45786FCE9DF4279AE01354556DEF51FF6F8"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/stephcleland\/MMDA-Team4-Project2.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "98BA7C251F9E13B7D56C04AE38E2A3067A46117B"
+    }
+  ]
+}

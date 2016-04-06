@@ -9,18 +9,44 @@
 import UIKit
 
 class EditActivityViewController: UIViewController {
-
+    
+    var currActivity:Activity!
     @IBOutlet weak var goal1: UITextView!
     @IBOutlet weak var goal2: UITextView!
     @IBOutlet weak var goal3: UITextView!
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var movementList: UITextView!
     @IBOutlet weak var activityLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         goal1.editable = false
         goal2.editable = false
         goal3.editable = false
+        movementList.editable = false
+        movementList.text = ""
+        
+        activityLabel.text = currentlySelectedActivity
+        currActivity = Activity()
+        var foundActivity = false
+        for activity in activities {
+            if (activity.name == currentlySelectedActivity) {
+                currActivity = activity
+                foundActivity = true
+            }
+        }
+        if (foundActivity) {
+            //let index = activities.indexOf(currentlySelectedActivity)
+            goal1.text = currActivity.goals[0]
+            goal2.text = currActivity.goals[1]
+            goal3.text = currActivity.goals[2]
+            for motion in currActivity.motions {
+               print(motion)
+               movementList.text = movementList.text + motion + "\n"
+            }
+        }
+        
+        
 
 
         // Do any additional setup after loading the view.
@@ -40,6 +66,9 @@ class EditActivityViewController: UIViewController {
         if (goal1.editable) {
             editButton.setTitle("Save", forState: .Normal)
         } else {
+            currActivity.changeGoals(0, goal: goal1.text)
+            currActivity.changeGoals(1, goal: goal2.text)
+            currActivity.changeGoals(2, goal: goal3.text)
             editButton.setTitle("Edit", forState: .Normal)
         }
     }

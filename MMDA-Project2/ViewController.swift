@@ -9,6 +9,7 @@
 import UIKit
 
 var activities = [Activity]()
+var currentlySelectedActivity = ""
 
 class ViewController: UIViewController {
 
@@ -17,6 +18,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var byDateButton: UIButton!
     @IBOutlet weak var byActivityButton: UIButton!
     @IBOutlet weak var beginSessionButton: UIButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         nameLabel.textAlignment = NSTextAlignment.Center

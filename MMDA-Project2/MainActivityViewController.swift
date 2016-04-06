@@ -16,7 +16,6 @@ class MainActivityViewController: UIViewController, UIPickerViewDataSource,UIPic
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var myLabel: UILabel!
     @IBOutlet weak var myPicker: UIPickerView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,14 +48,20 @@ class MainActivityViewController: UIViewController, UIPickerViewDataSource,UIPic
     @IBAction func startStopPressed(sender: AnyObject) {
         runningActivity = !runningActivity
         if (runningActivity) {
+            // starting activity monitoring
             startStopButton.setTitle("Stop Activity", forState: .Normal)
         } else {
+            // stopping activity monitoring
+            let feedbackVC = (self.storyboard?.instantiateViewControllerWithIdentifier("feedbackViewController") )! as UIViewController
+            //self.navigationController?.pushViewController(feedbackVC, animated: true)
+            //let feedbackVC = feedbackViewController()
+            presentViewController(feedbackVC, animated: true, completion: nil)
             startStopButton.setTitle("Start Activity", forState: .Normal)
         }
     }
     // this is where you do stuff with what is picked
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        myLabel.text = pickerData[row]
+        currentlySelectedActivity = pickerData[row]
     }
     
     func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
@@ -72,7 +77,7 @@ class MainActivityViewController: UIViewController, UIPickerViewDataSource,UIPic
             pickerLabel = UILabel()
             //color the label's background
             let hue = CGFloat(row)/CGFloat(pickerData.count)
-            pickerLabel.backgroundColor = UIColor(hue: hue, saturation: 1.0, brightness: 1.0, alpha: 1.0)
+            pickerLabel.backgroundColor = UIColor(hue: hue, saturation: 0.8, brightness: 1.0, alpha: 0.7)
         }
         let titleData = pickerData[row]
         let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 26.0)!,NSForegroundColorAttributeName:UIColor.blackColor()])
@@ -84,7 +89,7 @@ class MainActivityViewController: UIViewController, UIPickerViewDataSource,UIPic
     }
     
     func pickerView(pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-        return 36.0
+        return 45.0
     }
 
 

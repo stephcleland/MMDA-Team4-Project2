@@ -14,9 +14,9 @@ class Activity {
     var motions = [String]()
     
     init() {
-        name = "acitivitttty"
+        name = ""
         for i in 0...goals.count - 1 {
-            goals[i] = "blah"
+            goals[i] = "Enter a goal!"
         }
     }
     

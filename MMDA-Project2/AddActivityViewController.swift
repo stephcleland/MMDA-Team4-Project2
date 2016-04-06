@@ -69,11 +69,16 @@ class AddActivityViewController: UIViewController, UITableViewDelegate, UITableV
         newActivity.changeName(enterNameField.text!)
         let cells = self.tableView.visibleCells
         let vals = self.tableView.indexPathsForSelectedRows
-        for val in vals! {
-            print(cells[val.row].textLabel!.text!)
-            newActivity.addMotion(cells[val.row].textLabel!.text!)
+        if ((vals) != nil) {
+            // crashes when press done and nothing entered
+            for val in vals! {
+                print(cells[val.row].textLabel!.text!)
+                newActivity.addMotion(cells[val.row].textLabel!.text!)
+            }
         }
-        activities.append(newActivity)
+        if (enterNameField.text! != "") {
+            activities.append(newActivity)
+        }
         print(activities)
         
     }
