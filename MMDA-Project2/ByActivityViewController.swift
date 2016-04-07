@@ -78,7 +78,7 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
     }
     
     func pickerView(pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-        return 45.0
+        return 35.0
     }
 
 

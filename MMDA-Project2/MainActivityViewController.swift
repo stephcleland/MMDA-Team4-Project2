@@ -14,6 +14,7 @@ class MainActivityViewController: UIViewController, UIPickerViewDataSource,UIPic
     @IBOutlet weak var startStopButton: UIButton!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var startStopView: UIView!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var myPicker: UIPickerView!
@@ -21,6 +22,7 @@ class MainActivityViewController: UIViewController, UIPickerViewDataSource,UIPic
         super.viewDidLoad()
         myPicker.delegate = self
         myPicker.dataSource = self
+        startStopView.backgroundColor = UIColor(hue: 0.25, saturation: 0.22, brightness: 0.93, alpha: 1.0)
         for activity in activities {
             pickerData.append(activity.name)
         }
@@ -49,6 +51,7 @@ class MainActivityViewController: UIViewController, UIPickerViewDataSource,UIPic
         runningActivity = !runningActivity
         if (runningActivity) {
             // starting activity monitoring
+            startStopView.backgroundColor = UIColor(hue: 0.025, saturation: 0.22, brightness: 0.92, alpha: 1.0)
             startStopButton.setTitle("Stop Activity", forState: .Normal)
         } else {
             // stopping activity monitoring
@@ -57,6 +60,7 @@ class MainActivityViewController: UIViewController, UIPickerViewDataSource,UIPic
             //let feedbackVC = feedbackViewController()
             presentViewController(feedbackVC, animated: true, completion: nil)
             startStopButton.setTitle("Start Activity", forState: .Normal)
+            startStopView.backgroundColor = UIColor(hue: 0.25, saturation: 0.22, brightness: 0.93, alpha: 1.0)
         }
     }
     // this is where you do stuff with what is picked
