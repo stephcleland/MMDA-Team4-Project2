@@ -8,11 +8,15 @@
 
 import UIKit
 
+// EPCalendar from: https://github.com/ipraba/EPCalendarPicker
+
 class ByDateViewController: UIViewController, EPCalendarPickerDelegate {
 
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var viewCalButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var textViewDetail: UITextView!
+    @IBOutlet weak var textViewDetail: UILabel!
+
 
     override func viewDidLoad() {
         super.viewDidLoad()

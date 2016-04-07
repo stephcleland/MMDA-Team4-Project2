@@ -20,6 +20,7 @@ class EditActivityViewController: UIViewController {
     @IBOutlet weak var activityLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        activityLabel.textAlignment = .Center
         goal1.editable = false
         goal2.editable = false
         goal3.editable = false

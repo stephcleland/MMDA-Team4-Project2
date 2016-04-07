@@ -24,6 +24,8 @@ class feedbackViewController: UIViewController {
 
     @IBOutlet weak var assistanceDescriber: UILabel!
     override func viewDidLoad() {
+        titleLabel.text = "Feedback for " + currentlySelectedActivity
+        titleLabel.textAlignment = .Center
         cuesSlider.continuous = false
         assistanceSlider.continuous = false
         assistanceDescriber.text = assistanceDescribers[2]

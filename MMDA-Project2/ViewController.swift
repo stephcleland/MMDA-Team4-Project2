@@ -23,6 +23,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         nameLabel.textAlignment = NSTextAlignment.Center
         nameLabel.text = "Alexa"
+        nameLabel.textAlignment = .Center
         // Do any additional setup after loading the view, typically from a nib.
     }
 
