@@ -29,6 +29,14 @@
 		15BFA76D1CB5CC4200FAB4D1 /* EPCalendarHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15BFA7661CB5CC4200FAB4D1 /* EPCalendarHeaderView.xib */; };
 		15BFA76E1CB5CC4200FAB4D1 /* EPCalendarPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BFA7671CB5CC4200FAB4D1 /* EPCalendarPicker.swift */; };
 		15BFA76F1CB5CC4200FAB4D1 /* EPExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BFA7681CB5CC4200FAB4D1 /* EPExtensions.swift */; };
+		15F8BB701CC562B500315E35 /* PNBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F8BB6E1CC562B500315E35 /* PNBar.swift */; };
+		15F8BB711CC562B500315E35 /* PNBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F8BB6F1CC562B500315E35 /* PNBarChart.swift */; };
+		15F8BB761CC5631500315E35 /* PNChartConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F8BB721CC5631500315E35 /* PNChartConfig.swift */; };
+		15F8BB771CC5631500315E35 /* PNValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F8BB731CC5631500315E35 /* PNValue.swift */; };
+		15F8BB781CC5631500315E35 /* PNChartDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F8BB741CC5631500315E35 /* PNChartDelegate.swift */; };
+		15F8BB7C1CC5636100315E35 /* PNLineChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F8BB791CC5636100315E35 /* PNLineChartData.swift */; };
+		15F8BB7D1CC5636100315E35 /* PNChartLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F8BB7A1CC5636100315E35 /* PNChartLabel.swift */; };
+		15F8BB7E1CC5636100315E35 /* PNLineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F8BB7B1CC5636100315E35 /* PNLineChart.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +85,15 @@
 		15BFA7661CB5CC4200FAB4D1 /* EPCalendarHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EPCalendarHeaderView.xib; sourceTree = "<group>"; };
 		15BFA7671CB5CC4200FAB4D1 /* EPCalendarPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EPCalendarPicker.swift; sourceTree = "<group>"; };
 		15BFA7681CB5CC4200FAB4D1 /* EPExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EPExtensions.swift; sourceTree = "<group>"; };
+		15F8BB6E1CC562B500315E35 /* PNBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNBar.swift; sourceTree = "<group>"; };
+		15F8BB6F1CC562B500315E35 /* PNBarChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNBarChart.swift; sourceTree = "<group>"; };
+		15F8BB721CC5631500315E35 /* PNChartConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNChartConfig.swift; sourceTree = "<group>"; };
+		15F8BB731CC5631500315E35 /* PNValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNValue.swift; sourceTree = "<group>"; };
+		15F8BB741CC5631500315E35 /* PNChartDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNChartDelegate.swift; sourceTree = "<group>"; };
+		15F8BB751CC5631500315E35 /* PNChartSwift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNChartSwift.h; sourceTree = "<group>"; };
+		15F8BB791CC5636100315E35 /* PNLineChartData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNLineChartData.swift; sourceTree = "<group>"; };
+		15F8BB7A1CC5636100315E35 /* PNChartLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNChartLabel.swift; sourceTree = "<group>"; };
+		15F8BB7B1CC5636100315E35 /* PNLineChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNLineChart.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +147,7 @@
 				15BFA7231CB1A49600FAB4D1 /* AppDelegate.swift */,
 				15BFA7701CB5CD1E00FAB4D1 /* EPCalenderPicker */,
 				15BFA7251CB1A49600FAB4D1 /* ViewController.swift */,
+				15F8BB7F1CC5637200315E35 /* PNChart */,
 				15BFA7271CB1A49600FAB4D1 /* Main.storyboard */,
 				15BFA7601CB5B3FF00FAB4D1 /* feedbackViewController.swift */,
 				15BFA75E1CB1BF2400FAB4D1 /* Activity.swift */,
@@ -176,6 +194,22 @@
 				15BFA7681CB5CC4200FAB4D1 /* EPExtensions.swift */,
 			);
 			name = EPCalenderPicker;
+			sourceTree = "<group>";
+		};
+		15F8BB7F1CC5637200315E35 /* PNChart */ = {
+			isa = PBXGroup;
+			children = (
+				15F8BB6E1CC562B500315E35 /* PNBar.swift */,
+				15F8BB721CC5631500315E35 /* PNChartConfig.swift */,
+				15F8BB731CC5631500315E35 /* PNValue.swift */,
+				15F8BB741CC5631500315E35 /* PNChartDelegate.swift */,
+				15F8BB751CC5631500315E35 /* PNChartSwift.h */,
+				15F8BB6F1CC562B500315E35 /* PNBarChart.swift */,
+				15F8BB791CC5636100315E35 /* PNLineChartData.swift */,
+				15F8BB7A1CC5636100315E35 /* PNChartLabel.swift */,
+				15F8BB7B1CC5636100315E35 /* PNLineChart.swift */,
+			);
+			name = PNChart;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,6 +347,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				15BFA7571CB1A8C200FAB4D1 /* ByActivityViewController.swift in Sources */,
+				15F8BB761CC5631500315E35 /* PNChartConfig.swift in Sources */,
+				15F8BB701CC562B500315E35 /* PNBar.swift in Sources */,
 				15BFA76C1CB5CC4200FAB4D1 /* EPCalendarHeaderView.swift in Sources */,
 				15BFA76E1CB5CC4200FAB4D1 /* EPCalendarPicker.swift in Sources */,
 				15BFA7611CB5B3FF00FAB4D1 /* feedbackViewController.swift in Sources */,
@@ -322,11 +358,17 @@
 				15BFA7591CB1A8E400FAB4D1 /* ByDateViewController.swift in Sources */,
 				15BFA75B1CB1AE5C00FAB4D1 /* AddActivityViewController.swift in Sources */,
 				15BFA75F1CB1BF2400FAB4D1 /* Activity.swift in Sources */,
+				15F8BB7E1CC5636100315E35 /* PNLineChart.swift in Sources */,
+				15F8BB7C1CC5636100315E35 /* PNLineChartData.swift in Sources */,
 				15BFA76F1CB5CC4200FAB4D1 /* EPExtensions.swift in Sources */,
+				15F8BB781CC5631500315E35 /* PNChartDelegate.swift in Sources */,
 				15BFA76A1CB5CC4200FAB4D1 /* EPCalendarConstants.swift in Sources */,
 				15BFA7241CB1A49600FAB4D1 /* AppDelegate.swift in Sources */,
 				15BFA7691CB5CC4200FAB4D1 /* EPCalendarCell1.swift in Sources */,
 				15BFA72C1CB1A49600FAB4D1 /* MMDA_Project2.xcdatamodeld in Sources */,
+				15F8BB711CC562B500315E35 /* PNBarChart.swift in Sources */,
+				15F8BB771CC5631500315E35 /* PNValue.swift in Sources */,
+				15F8BB7D1CC5636100315E35 /* PNChartLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

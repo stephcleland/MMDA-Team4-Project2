@@ -10,7 +10,7 @@ import UIKit
 
 // EPCalendar from: https://github.com/ipraba/EPCalendarPicker
 
-class ByDateViewController: UIViewController, EPCalendarPickerDelegate {
+class ByDateViewController: UIViewController, EPCalendarPickerDelegate, PNChartDelegate{
 
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var viewCalButton: UIButton!
@@ -51,6 +51,22 @@ class ByDateViewController: UIViewController, EPCalendarPickerDelegate {
     }
     func epCalendarPicker(_: EPCalendarPicker, didSelectMultipleDate dates : [NSDate]) {
         textViewDetail.text = "Showing data for: \n\(dates)"
+    }
+    
+    
+    func userClickedOnLineKeyPoint(point: CGPoint, lineIndex: Int, keyPointIndex: Int)
+    {
+        print("Click Key on line \(point.x), \(point.y) line index is \(lineIndex) and point index is \(keyPointIndex)")
+    }
+    
+    func userClickedOnLinePoint(point: CGPoint, lineIndex: Int)
+    {
+        print("Click Key on line \(point.x), \(point.y) line index is \(lineIndex)")
+    }
+    
+    func userClickedOnBarChartIndex(barIndex: Int)
+    {
+        print("Click  on bar \(barIndex)")
     }
 
     /*

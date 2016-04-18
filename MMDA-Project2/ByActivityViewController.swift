@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPickerViewDelegate {
+class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPickerViewDelegate, PNChartDelegate {
 
     @IBOutlet weak var viewBy: UILabel!
     @IBOutlet weak var backButton: UIButton!
@@ -79,6 +79,22 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
     
     func pickerView(pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return 35.0
+    }
+    
+    
+    func userClickedOnLineKeyPoint(point: CGPoint, lineIndex: Int, keyPointIndex: Int)
+    {
+        print("Click Key on line \(point.x), \(point.y) line index is \(lineIndex) and point index is \(keyPointIndex)")
+    }
+    
+    func userClickedOnLinePoint(point: CGPoint, lineIndex: Int)
+    {
+        print("Click Key on line \(point.x), \(point.y) line index is \(lineIndex)")
+    }
+    
+    func userClickedOnBarChartIndex(barIndex: Int)
+    {
+        print("Click  on bar \(barIndex)")
     }
 
 
