@@ -28,8 +28,35 @@ class ViewController: UIViewController, PNChartDelegate {
         nameLabel.textAlignment = .Center
     
         
-      
-        let ChartLabel:UILabel = UILabel(frame: CGRectMake(0, 90, 320.0, 30))
+        // Get data from the server
+        let url = NSURL(string: "https://guarded-hamlet-96865.herokuapp.com/home")
+        let request = NSMutableURLRequest(URL: url!)
+        request.HTTPMethod = "GET"
+        
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
+            data, response, error in
+            
+            if error != nil
+            {
+                print("error=\(error)")
+            }
+            
+            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+            print("responseString = \(responseString!)")
+        }
+        
+        task.resume();
+        
+        // Chart Stuff
+
+        drawChart();
+        
+
+    }
+
+ 
+    func drawChart() {
+        let ChartLabel:UILabel = UILabel(frame: CGRectMake(0, 115, 320.0, 30))
         
         ChartLabel.textColor = PNGreenColor
         ChartLabel.font = UIFont(name: "Avenir-Medium", size:23.0)
@@ -38,30 +65,30 @@ class ViewController: UIViewController, PNChartDelegate {
         // Bar Chart
         /*
          ChartLabel.text = "Bar Chart"
-
-        let barChart = PNBarChart(frame: CGRectMake(0, 135.0, 320.0, 200.0))
-        barChart.backgroundColor = UIColor.clearColor()
-
-        barChart.animationType = .Waterfall
-        
-        
-        barChart.labelMarginTop = 5.0
-        barChart.xLabels = ["SEP 1","SEP 2","SEP 3","SEP 4","SEP 5","SEP 6","SEP 7"]
-        barChart.yValues = [1,24,12,18,30,10,21]
-        barChart.strokeChart()
-        
-        barChart.delegate = self
-        
-        view.addSubview(ChartLabel)
-        view.addSubview(barChart)
-        
-        title = "Bar Chart"
- */
+         
+         let barChart = PNBarChart(frame: CGRectMake(0, 135.0, 320.0, 200.0))
+         barChart.backgroundColor = UIColor.clearColor()
+         
+         barChart.animationType = .Waterfall
+         
+         
+         barChart.labelMarginTop = 5.0
+         barChart.xLabels = ["SEP 1","SEP 2","SEP 3","SEP 4","SEP 5","SEP 6","SEP 7"]
+         barChart.yValues = [1,24,12,18,30,10,21]
+         barChart.strokeChart()
+         
+         barChart.delegate = self
+         
+         view.addSubview(ChartLabel)
+         view.addSubview(barChart)
+         
+         title = "Bar Chart"
+         */
         
         // Line Chart
         ChartLabel.text = "Line Chart"
         
-        let lineChart:PNLineChart = PNLineChart(frame: CGRectMake(0, 135.0, 320, 200.0))
+        let lineChart:PNLineChart = PNLineChart(frame: CGRectMake(0, 150.0, 320, 200.0))
         lineChart.yLabelFormat = "%1.1f"
         lineChart.showLabel = true
         lineChart.backgroundColor = UIColor.clearColor()
@@ -88,12 +115,7 @@ class ViewController: UIViewController, PNChartDelegate {
         view.addSubview(ChartLabel)
         title = "Line Chart"
         
-        
-
     }
-
- 
-
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
