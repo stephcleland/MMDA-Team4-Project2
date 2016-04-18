@@ -66,7 +66,7 @@ class ViewController: UIViewController, PNChartDelegate {
         /*
          ChartLabel.text = "Bar Chart"
          
-         let barChart = PNBarChart(frame: CGRectMake(0, 135.0, 320.0, 200.0))
+         let barChart = PNBarChart(frame: CGRectMake(0, 150.0, 320.0, 200.0))
          barChart.backgroundColor = UIColor.clearColor()
          
          barChart.animationType = .Waterfall

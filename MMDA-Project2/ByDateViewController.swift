@@ -20,7 +20,8 @@ class ByDateViewController: UIViewController, EPCalendarPickerDelegate, PNChartD
 
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        drawBarChart()
+        
         // Do any additional setup after loading the view.
     }
     @IBAction func viewCal(sender: AnyObject) {
@@ -37,7 +38,7 @@ class ByDateViewController: UIViewController, EPCalendarPickerDelegate, PNChartD
     }
     
     func drawBarChart () {
-            let ChartLabel:UILabel = UILabel(frame: CGRectMake(0, 115, 320.0, 30))
+            let ChartLabel:UILabel = UILabel(frame: CGRectMake(0, 300, 320.0, 30))
             
             ChartLabel.textColor = PNGreenColor
             ChartLabel.font = UIFont(name: "Avenir-Medium", size:23.0)
@@ -45,7 +46,7 @@ class ByDateViewController: UIViewController, EPCalendarPickerDelegate, PNChartD
         
              ChartLabel.text = "Bar Chart"
              
-             let barChart = PNBarChart(frame: CGRectMake(0, 135.0, 320.0, 200.0))
+             let barChart = PNBarChart(frame: CGRectMake(0, 335, 320.0, 200.0))
              barChart.backgroundColor = UIColor.clearColor()
              
              barChart.animationType = .Waterfall
