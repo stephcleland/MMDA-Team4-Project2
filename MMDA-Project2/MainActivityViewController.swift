@@ -22,6 +22,12 @@ class MainActivityViewController: UIViewController, UIPickerViewDataSource,UIPic
         super.viewDidLoad()
         myPicker.delegate = self
         myPicker.dataSource = self
+        startStopButton.titleLabel?.font = UIFont(name: "ArialRoundedMTBold", size: 18.0)
+        addButton.titleLabel?.font = UIFont(name: "ArialRoundedMTBold", size: 40.0)
+        editButton.titleLabel?.font = UIFont(name: "ArialRoundedMTBold", size: 18.0)
+        titleLabel.font = UIFont(name: "ArialRoundedMTBold", size: 24.0)
+        backButton.titleLabel?.font = UIFont(name: "ArialRoundedMTBold", size: 14.0)
+        titleLabel.textAlignment = .Center
         startStopView.backgroundColor = UIColor(hue: 0.25, saturation: 0.22, brightness: 0.93, alpha: 1.0)
         for activity in activities {
             pickerData.append(activity.name)
@@ -70,7 +76,7 @@ class MainActivityViewController: UIViewController, UIPickerViewDataSource,UIPic
     
     func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         let titleData = pickerData[row]
-        let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 26.0)!,NSForegroundColorAttributeName:UIColor.blueColor()])
+        let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "ArialRoundedMTBold", size: 26.0)!,NSForegroundColorAttributeName:UIColor.blueColor()])
         return myTitle
     }
     
@@ -84,7 +90,7 @@ class MainActivityViewController: UIViewController, UIPickerViewDataSource,UIPic
             pickerLabel.backgroundColor = UIColor(hue: hue, saturation: 0.8, brightness: 1.0, alpha: 0.7)
         }
         let titleData = pickerData[row]
-        let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 26.0)!,NSForegroundColorAttributeName:UIColor.blackColor()])
+        let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "ArialRoundedMTBold", size: 26.0)!,NSForegroundColorAttributeName:UIColor.blackColor()])
         pickerLabel!.attributedText = myTitle
         pickerLabel!.textAlignment = .Center
         

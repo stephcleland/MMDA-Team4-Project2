@@ -26,7 +26,11 @@ class ViewController: UIViewController, PNChartDelegate {
         nameLabel.textAlignment = NSTextAlignment.Center
         nameLabel.text = "Alexa"
         nameLabel.textAlignment = .Center
-    
+        nameLabel.font = UIFont(name: "ArialRoundedMTBold", size: 30.0)
+        byDateButton.titleLabel?.font = UIFont(name: "ArialRoundedMTBold", size: 14.0)
+        byActivityButton.titleLabel?.font = UIFont(name: "ArialRoundedMTBold", size: 14.0)
+        beginSessionButton.titleLabel?.font = UIFont(name: "ArialRoundedMTBold", size: 22.0)
+
         
         // Get data from the server
         let url = NSURL(string: "https://guarded-hamlet-96865.herokuapp.com/home")
@@ -88,7 +92,7 @@ class ViewController: UIViewController, PNChartDelegate {
         // Line Chart
         ChartLabel.text = "Line Chart"
         
-        let lineChart:PNLineChart = PNLineChart(frame: CGRectMake(0, 150.0, 320, 200.0))
+        let lineChart:PNLineChart = PNLineChart(frame: CGRectMake(10, 150.0, 300, 200.0))
         lineChart.yLabelFormat = "%1.1f"
         lineChart.showLabel = true
         lineChart.backgroundColor = UIColor.clearColor()

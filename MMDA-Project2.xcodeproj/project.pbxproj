@@ -280,7 +280,7 @@
 				TargetAttributes = {
 					15BFA71F1CB1A49600FAB4D1 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = EX6ZZT82JA;
+						DevelopmentTeam = WC8GK6LE4R;
 					};
 					15BFA7361CB1A49600FAB4D1 = {
 						CreatedOnToolsVersion = 7.3;
@@ -515,7 +515,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "MMDA-Project2/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.tufts.cs.MMDA-Project2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -531,7 +531,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "MMDA-Project2/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.tufts.cs.MMDA-Project2";
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class feedbackViewController: UIViewController {
+class feedbackViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var cuesSlider: UISlider!
     @IBOutlet weak var assistanceSlider: UISlider!
@@ -20,6 +20,7 @@ class feedbackViewController: UIViewController {
     @IBOutlet weak var assistanceQ: UILabel!
     var assistanceDescribers = ["100% - Total Assistance", "75% - Maximum Assistance", "50% - Moderate Assistance", "25% - Minimum Assistance", "0% - Standby Assistance"]
     var cuesDescribers = ["100% - Constant Cues", "75% - Maximum Cues", "50% - Moderate Cues", "25% - Minimum Cues", "10% - Occassional Cues", "0% - No Cues"]
+    var animateTextView = false
 
 
     @IBOutlet weak var assistanceDescriber: UILabel!
@@ -31,6 +32,7 @@ class feedbackViewController: UIViewController {
         assistanceDescriber.text = assistanceDescribers[2]
         cuesDescriber.text = cuesDescribers[2]
         commentsField.text = "Any other comments on today's activity?"
+        self.commentsField.delegate = self
         
         
     }
@@ -94,9 +96,28 @@ class feedbackViewController: UIViewController {
 
     }
     
-    //@IBAction func sliderValueChanged(sender: cuesSlider) {
-    //
-    //}
-
+    func textViewDidBeginEditing(textView: UITextView) {
+        print("we out here")
+        self.animateTextView(true)
+        
+    }
+    
+    func textViewDidEndEditing(textView: UITextView) {
+        print("hello")
+        self.animateTextView(false)
+    }
+    
+    func animateTextView(up: Bool) {
+        let movementDistance:Int = 224
+        let movementDuration:Float = 0.35
+        let movement = (up ? -movementDistance : movementDistance)
+        UIView.beginAnimations("anim", context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(NSTimeInterval(movementDuration))
+        self.view.frame = CGRectOffset(self.view.frame, 0, CGFloat(movement))
+        UIView.commitAnimations()
+        
+    }
+    
 }
 
