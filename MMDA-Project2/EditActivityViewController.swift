@@ -63,7 +63,6 @@ class EditActivityViewController: UIViewController {
             goal2.text = currActivity.goals[1]
             goal3.text = currActivity.goals[2]
             for motion in currActivity.motions {
-               print(motion)
                movementList.text = movementList.text + motion + "\n"
             }
         }

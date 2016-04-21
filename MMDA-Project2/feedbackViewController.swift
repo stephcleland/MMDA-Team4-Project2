@@ -107,13 +107,11 @@ class feedbackViewController: UIViewController, UITextViewDelegate {
     }
     
     func textViewDidBeginEditing(textView: UITextView) {
-        print("we out here")
         self.animateTextView(true)
         
     }
     
     func textViewDidEndEditing(textView: UITextView) {
-        print("hello")
         self.animateTextView(false)
     }
     

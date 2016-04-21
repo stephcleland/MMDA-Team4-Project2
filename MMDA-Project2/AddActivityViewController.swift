@@ -75,7 +75,6 @@ class AddActivityViewController: UIViewController, UITableViewDelegate, UITableV
         if ((vals) != nil) {
             // crashes when press done and nothing entered
             for val in vals! {
-                print(cells[val.row].textLabel!.text!)
                 newActivity.addMotion(cells[val.row].textLabel!.text!)
             }
         }
