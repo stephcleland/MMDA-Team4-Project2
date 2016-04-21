@@ -25,6 +25,16 @@ class feedbackViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var assistanceDescriber: UILabel!
     override func viewDidLoad() {
+
+        titleLabel.font = UIFont(name: "ArialRoundedMTBold", size: 19.0)
+        commentsField.font = UIFont(name: "ArialRoundedMTBold", size: 14.0)
+        doneButton.titleLabel?.font = UIFont(name: "ArialRoundedMTBold", size: 15.0)
+        cuesQ.font = UIFont(name: "ArialRoundedMTBold", size: 15.0)
+        commentsLabel.font = UIFont(name: "ArialRoundedMTBold", size: 17.0)
+        cuesDescriber.font = UIFont(name: "ArialRoundedMTBold", size: 15.0)
+        assistanceQ.font = UIFont(name: "ArialRoundedMTBold", size: 15.0)
+        assistanceDescriber.font = UIFont(name: "ArialRoundedMTBold", size: 15.0)
+        
         titleLabel.text = "Feedback for " + currentlySelectedActivity
         titleLabel.textAlignment = .Center
         cuesSlider.continuous = false

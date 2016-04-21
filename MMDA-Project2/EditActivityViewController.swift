@@ -10,9 +10,14 @@ import UIKit
 
 class EditActivityViewController: UIViewController {
     
+    @IBOutlet weak var goalsLabel: UILabel!
     var currActivity:Activity!
+    @IBOutlet weak var two: UILabel!
+    @IBOutlet weak var one: UILabel!
     @IBOutlet weak var goal1: UITextView!
     @IBOutlet weak var goal2: UITextView!
+    @IBOutlet weak var movementsLabel: UILabel!
+    @IBOutlet weak var three: UILabel!
     @IBOutlet weak var goal3: UITextView!
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var editButton: UIButton!
@@ -24,6 +29,22 @@ class EditActivityViewController: UIViewController {
         goal1.editable = false
         goal2.editable = false
         goal3.editable = false
+        
+        activityLabel.font = UIFont(name: "ArialRoundedMTBold", size: 20.0)
+        doneButton.titleLabel?.font = UIFont(name: "ArialRoundedMTBold", size: 16.0)
+        editButton.titleLabel?.font = UIFont(name: "ArialRoundedMTBold", size: 15.0)
+        movementList.font = UIFont(name: "ArialRoundedMTBold", size: 15.0)
+        goal1.font = UIFont(name: "ArialRoundedMTBold", size: 15.0)
+        goal2.font = UIFont(name: "ArialRoundedMTBold", size: 15.0)
+        goal3.font = UIFont(name: "ArialRoundedMTBold", size: 15.0)
+        one.font = UIFont(name: "ArialRoundedMTBold", size: 17.0)
+        two.font = UIFont(name: "ArialRoundedMTBold", size: 17.0)
+        three.font = UIFont(name: "ArialRoundedMTBold", size: 17.0)
+        movementsLabel.font = UIFont(name: "ArialRoundedMTBold", size: 17.0)
+        goalsLabel.font = UIFont(name: "ArialRoundedMTBold", size: 17.0)
+        
+        
+        
         movementList.editable = false
         movementList.text = ""
         

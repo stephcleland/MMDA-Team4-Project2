@@ -26,6 +26,12 @@ class AddActivityViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.delegate = self
         tableView.dataSource = self
         self.tableView.allowsMultipleSelection = true
+        
+        titleLabel.font = UIFont(name: "ArialRoundedMTBold", size: 20.0)
+        motionsTrackLabel.font = UIFont(name: "ArialRoundedMTBold", size: 17.0)
+        enterNameField.font = UIFont(name: "ArialRoundedMTBold", size: 16.0)
+        enterNameLabel.font = UIFont(name: "ArialRoundedMTBold", size: 17.0)
+        doneButton.titleLabel?.font = UIFont(name: "ArialRoundedMTBold", size: 16.0)
 
         // Do any additional setup after loading the view.
     }
@@ -38,7 +44,6 @@ class AddActivityViewController: UIViewController, UITableViewDelegate, UITableV
     @IBAction func enter1Pressed(sender: AnyObject) {
         enterNameField.resignFirstResponder()
         activityName = enterNameField.text
-        print(activityName)
         
     }
     
@@ -48,12 +53,10 @@ class AddActivityViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        print("KJADHJKA")
         let cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell
     
         cell.textLabel!.text = self.tableData[indexPath.row]
-        print(cell.textLabel!.text)
-        
+        cell.textLabel?.font = UIFont(name: "ArialRoundedMTBold", size: 16.0)
         return cell
     }
     
@@ -79,7 +82,6 @@ class AddActivityViewController: UIViewController, UITableViewDelegate, UITableV
         if (enterNameField.text! != "") {
             activities.append(newActivity)
         }
-        print(activities)
         
     }
     

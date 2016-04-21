@@ -20,6 +20,12 @@ class ByDateViewController: UIViewController, EPCalendarPickerDelegate, PNChartD
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        backButton.titleLabel?.font = UIFont(name: "ArialRoundedMTBold", size: 15.0)
+        viewCalButton.titleLabel?.font = UIFont(name: "ArialRoundedMTBold", size: 21.0)
+        titleLabel.font = UIFont(name: "ArialRoundedMTBold", size: 19.0)
+        textViewDetail.font = UIFont(name: "ArialRoundedMTBold", size: 17.0)
+        
+        
         drawBarChart()
         
         // Do any additional setup after loading the view.

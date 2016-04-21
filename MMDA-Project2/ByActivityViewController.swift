@@ -18,7 +18,13 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
     var currActivity = ""
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
+        backButton.titleLabel?.font = UIFont(name: "ArialRoundedMTBold", size: 15.0)
+        viewBy.font = UIFont(name: "ArialRoundedMTBold", size: 17.0)
+        titleLabel.font = UIFont(name: "ArialRoundedMTBold", size: 19.0)
+        
         myPicker.delegate = self
         myPicker.dataSource = self
         for activity in activities {
@@ -123,9 +129,10 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
     
     func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         let titleData = pickerData[row]
-        let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 26.0)!,NSForegroundColorAttributeName:UIColor.blueColor()])
+        let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "ArialRoundedMTBold", size: 26.0)!,NSForegroundColorAttributeName:UIColor.blueColor()])
         return myTitle
     }
+    
     
     /* better memory management version */
     func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView {
@@ -137,7 +144,7 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
             pickerLabel.backgroundColor = UIColor(hue: hue, saturation: 0.8, brightness: 1.0, alpha: 0.7)
         }
         let titleData = pickerData[row]
-        let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 26.0)!,NSForegroundColorAttributeName:UIColor.blackColor()])
+        let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "ArialRoundedMTBold", size: 26.0)!,NSForegroundColorAttributeName:UIColor.blackColor()])
         pickerLabel!.attributedText = myTitle
         pickerLabel!.textAlignment = .Center
         
