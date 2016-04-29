@@ -2,9 +2,10 @@
 //  feedbackViewController.swift
 //  MMDA-Project2
 //
-//  Created by Stephanie Cleland on 4/6/16.
-//  Copyright © 2016 Stephanie Cleland. All rights reserved.
-//
+//  Written by Stephanie Cleland & Nate Winters on 4/6/16.
+//  Modified on:
+//  Copyright © 2016 Stephanie Cleland & Nate Winters. All rights reserved.
+
 
 import UIKit
 
@@ -26,6 +27,7 @@ class feedbackViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var assistanceDescriber: UILabel!
     override func viewDidLoad() {
 
+        // setting up the UI
         titleLabel.font = UIFont(name: "ArialRoundedMTBold", size: 19.0)
         commentsField.font = UIFont(name: "ArialRoundedMTBold", size: 14.0)
         doneButton.titleLabel?.font = UIFont(name: "ArialRoundedMTBold", size: 15.0)
@@ -46,7 +48,9 @@ class feedbackViewController: UIViewController, UITextViewDelegate {
         
         
     }
-      @IBAction func assistanceSliderChanged(sender: UISlider) {
+    
+    // function that forces the user to pick one of 5 values with a certain display on the assistance slider
+    @IBAction func assistanceSliderChanged(sender: UISlider) {
         let prev = sender.value * 100
         var next:Float = 50
         var text:String = ""
@@ -73,6 +77,8 @@ class feedbackViewController: UIViewController, UITextViewDelegate {
         sender.value = next / 100
         assistanceDescriber.text = text
     }
+    
+    // function that forces the user to pick one of 4 values with a certain display on the cues slider
     @IBAction func cuesSliderChanged(sender: UISlider) {
         let prev = sender.value * 100
         var next:Float = 50
@@ -106,6 +112,8 @@ class feedbackViewController: UIViewController, UITextViewDelegate {
 
     }
     
+
+    // functions to move the comments field above the keyboard when pulled up
     func textViewDidBeginEditing(textView: UITextView) {
         self.animateTextView(true)
         

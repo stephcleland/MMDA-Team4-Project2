@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  MMDA-Project2
 //
-//  Created by Stephanie Cleland on 4/3/16.
-//  Copyright © 2016 Stephanie Cleland. All rights reserved.
+//  Created by Stephanie Cleland & Nate Winters on 4/3/16.
+//  Copyright © 2016 Stephanie Cleland & Nate Winters. All rights reserved.
 //
 
 import UIKit

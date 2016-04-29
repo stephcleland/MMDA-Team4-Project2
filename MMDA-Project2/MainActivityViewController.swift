@@ -2,9 +2,11 @@
 //  MainActivityViewController.swift
 //  MMDA-Project2
 //
-//  Created by Stephanie Cleland on 4/3/16.
-//  Copyright © 2016 Stephanie Cleland. All rights reserved.
 //
+//  Written by Stephanie Cleland & Nate Winters on 4/3/16.
+//  Modified on:
+//  Copyright © 2016 Stephanie Cleland & Nate Winters. All rights reserved.
+
 
 import UIKit
 
@@ -53,6 +55,8 @@ class MainActivityViewController: UIViewController, UIPickerViewDataSource,UIPic
         return pickerData[row]
     }
     
+    // record the timestamp when start and stop pressed
+    // when stop pressed, pull that specific time slice from the server to process
     @IBAction func startStopPressed(sender: AnyObject) {
         runningActivity = !runningActivity
         if (runningActivity) {

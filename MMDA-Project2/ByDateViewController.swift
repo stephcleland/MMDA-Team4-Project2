@@ -2,9 +2,11 @@
 //  ByDateViewController.swift
 //  MMDA-Project2
 //
-//  Created by Stephanie Cleland on 4/3/16.
-//  Copyright © 2016 Stephanie Cleland. All rights reserved.
+//  Written by Stephanie Cleland & Nate Winters on 4/3/16.
+//  Modified on:
+//  Copyright © 2016 Stephanie Cleland & Nate Winters. All rights reserved.
 //
+// Line chart and bar graph from: https://github.com/kevinzhow/PNChart-Swift
 
 import UIKit
 
@@ -27,9 +29,7 @@ class ByDateViewController: UIViewController, EPCalendarPickerDelegate, PNChartD
         
         
         drawBarChart()
-        
-        // Do any additional setup after loading the view.
-    }
+            }
     @IBAction func viewCal(sender: AnyObject) {
         super.viewDidAppear(true)
         let calendarPicker = EPCalendarPicker(startYear: 2015, endYear: 2017, multiSelection: false, selectedDates: nil)
@@ -40,7 +40,6 @@ class ByDateViewController: UIViewController, EPCalendarPickerDelegate, PNChartD
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func drawBarChart () {
@@ -118,8 +117,6 @@ class ByDateViewController: UIViewController, EPCalendarPickerDelegate, PNChartD
     func epCalendarPicker(_: EPCalendarPicker, didSelectDate date : NSDate) {
         let formatter = NSDateFormatter()
         formatter.dateFormat = "MM/dd/yyyy"
-        //formatter.dateStyle = NSDateFormatterStyle.LongStyle
-        //formatter.timeStyle = .NoStyle
         let dateString = formatter.stringFromDate(date)
         textViewDetail.text = "Showing data for " + dateString
         
@@ -144,15 +141,5 @@ class ByDateViewController: UIViewController, EPCalendarPickerDelegate, PNChartD
         print("Click  on bar \(barIndex)")
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

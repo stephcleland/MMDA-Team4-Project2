@@ -2,17 +2,20 @@
 //  ViewController.swift
 //  MMDA-Project2
 //
-//  Created by Stephanie Cleland on 4/3/16.
-//  Copyright © 2016 Stephanie Cleland. All rights reserved.
+//  Written by Stephanie Cleland & Nate Winters on 4/3/16.
+//  Modified on:
+//  Copyright © 2016 Stephanie Cleland & Nate Winters. All rights reserved.
 //
+// Heroku Server written by: Alex Goldschmidt
+//
+// Line chart and bar graph from: https://github.com/kevinzhow/PNChart-Swift
+
 
 import UIKit
 
 var activities = [Activity]()
 var currentlySelectedActivity = ""
 
-
-// https://github.com/kevinzhow/PNChart-Swift
 class ViewController: UIViewController, PNChartDelegate {
 
     @IBOutlet weak var dataView: UIView!
@@ -23,6 +26,8 @@ class ViewController: UIViewController, PNChartDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Setting up the UI
         nameLabel.textAlignment = NSTextAlignment.Center
         nameLabel.text = "Alexa"
         nameLabel.textAlignment = .Center
@@ -51,7 +56,6 @@ class ViewController: UIViewController, PNChartDelegate {
         
         task.resume();
         
-        // Chart Stuff
 
         drawChart();
         
@@ -59,9 +63,10 @@ class ViewController: UIViewController, PNChartDelegate {
     }
 
  
+    // draws a line/bar chart with the data pulled from the server
     func drawChart() {
-        let ChartLabel:UILabel = UILabel(frame: CGRectMake(0, 115, 320.0, 30))
         
+        let ChartLabel:UILabel = UILabel(frame: CGRectMake(0, 115, 320.0, 30))
         ChartLabel.textColor = PNGreenColor
         ChartLabel.font = UIFont(name: "Avenir-Medium", size:23.0)
         ChartLabel.textAlignment = NSTextAlignment.Center
@@ -123,21 +128,22 @@ class ViewController: UIViewController, PNChartDelegate {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
-    
-    
+
+    // function if the user clicks on a point on the line graph
     func userClickedOnLineKeyPoint(point: CGPoint, lineIndex: Int, keyPointIndex: Int)
     {
         print("Click Key on line \(point.x), \(point.y) line index is \(lineIndex) and point index is \(keyPointIndex)")
     }
     
+    // function if the user clicks on a line segment on the line graph
     func userClickedOnLinePoint(point: CGPoint, lineIndex: Int)
     {
         print("Click Key on line \(point.x), \(point.y) line index is \(lineIndex)")
     }
     
+    // function if the user clicks on a bar in the bar graph
     func userClickedOnBarChartIndex(barIndex: Int)
     {
         print("Click  on bar \(barIndex)")

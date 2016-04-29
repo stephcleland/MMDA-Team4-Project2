@@ -2,9 +2,11 @@
 //  AddActivityViewController.swift
 //  MMDA-Project2
 //
-//  Created by Stephanie Cleland on 4/3/16.
-//  Copyright © 2016 Stephanie Cleland. All rights reserved.
 //
+//  Written by Stephanie Cleland & Nate Winters on 4/3/16.
+//  Modified on:
+//  Copyright © 2016 Stephanie Cleland & Nate Winters. All rights reserved.
+
 
 import UIKit
 
@@ -33,12 +35,10 @@ class AddActivityViewController: UIViewController, UITableViewDelegate, UITableV
         enterNameLabel.font = UIFont(name: "ArialRoundedMTBold", size: 17.0)
         doneButton.titleLabel?.font = UIFont(name: "ArialRoundedMTBold", size: 16.0)
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func enter1Pressed(sender: AnyObject) {
@@ -73,7 +73,6 @@ class AddActivityViewController: UIViewController, UITableViewDelegate, UITableV
         let cells = self.tableView.visibleCells
         let vals = self.tableView.indexPathsForSelectedRows
         if ((vals) != nil) {
-            // crashes when press done and nothing entered
             for val in vals! {
                 newActivity.addMotion(cells[val.row].textLabel!.text!)
             }
