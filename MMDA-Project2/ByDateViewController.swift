@@ -3,7 +3,7 @@
 //  MMDA-Project2
 //
 //  Written by Stephanie Cleland & Nate Winters on 4/3/16.
-//  Modified on:
+//  Modified on: 5/4/16
 //  Copyright © 2016 Stephanie Cleland & Nate Winters. All rights reserved.
 //
 // Line chart and bar graph from: https://github.com/kevinzhow/PNChart-Swift
@@ -89,7 +89,6 @@ class ByDateViewController: UIViewController, EPCalendarPickerDelegate, PNChartD
         lineChart.showCoordinateAxis = true
         lineChart.delegate = self
         
-        // Line Chart Nr.1
         var data01Array: [CGFloat] = [60.1, 160.1, 126.4, 262.2, 186.2, 127.2, 176.2]
         let data01:PNLineChartData = PNLineChartData()
         data01.color = PNGreenColor

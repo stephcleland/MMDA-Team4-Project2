@@ -3,7 +3,7 @@
 //  MMDA-Project2
 //
 //  Written by Stephanie Cleland & Nate Winters on 4/3/16.
-//  Modified on:
+//  Modified on: 5/2/16
 //  Copyright © 2016 Stephanie Cleland & Nate Winters. All rights reserved.
 //
 // Heroku Server written by: Alex Goldschmidt
@@ -36,9 +36,9 @@ class ViewController: UIViewController, PNChartDelegate {
         byActivityButton.titleLabel?.font = UIFont(name: "ArialRoundedMTBold", size: 14.0)
         beginSessionButton.titleLabel?.font = UIFont(name: "ArialRoundedMTBold", size: 22.0)
 
-        
         // Get data from the server
-        let url = NSURL(string: "https://guarded-hamlet-96865.herokuapp.com/home")
+        /* want to get this from the gyro data we've edited
+        let url = NSURL(string: "https://guarded-hamlet-96865.herokuapp.com/gyro")
         let request = NSMutableURLRequest(URL: url!)
         request.HTTPMethod = "GET"
         
@@ -55,7 +55,7 @@ class ViewController: UIViewController, PNChartDelegate {
         }
         
         task.resume();
-        
+        */
 
         drawChart();
         
@@ -105,7 +105,6 @@ class ViewController: UIViewController, PNChartDelegate {
         lineChart.showCoordinateAxis = true
         lineChart.delegate = self
         
-        // Line Chart Nr.1
         var data01Array: [CGFloat] = [60.1, 160.1, 126.4, 262.2, 186.2, 127.2, 176.2]
         let data01:PNLineChartData = PNLineChartData()
         data01.color = PNGreenColor

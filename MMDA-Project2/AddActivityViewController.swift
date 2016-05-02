@@ -4,7 +4,7 @@
 //
 //
 //  Written by Stephanie Cleland & Nate Winters on 4/3/16.
-//  Modified on:
+//  Modified on: 5/2/16
 //  Copyright © 2016 Stephanie Cleland & Nate Winters. All rights reserved.
 
 
@@ -19,7 +19,7 @@ class AddActivityViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var enterNameLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var enterNameField: UITextField!
-    var tableData: [String] = ["Arm", "Leg", "Head", "Toes", "Nose"]
+    var tableData: [String] = ["Shoulder Flexion", "Shoulder Horizontal Adduction", "Elbow Supination", "Elbow Pronation"]
   
 
     override func viewDidLoad() {
@@ -83,17 +83,5 @@ class AddActivityViewController: UIViewController, UITableViewDelegate, UITableV
         
     }
     
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -3,7 +3,7 @@
 //  MMDA-Project2
 //
 //  Written by Stephanie Cleland & Nate Winters on 4/3/16.
-//  Modified on:
+//  Modified on: 5/2/16
 //  Copyright © 2016 Stephanie Cleland & Nate Winters. All rights reserved.
 
 
@@ -24,12 +24,17 @@ class EditActivityViewController: UIViewController {
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var movementList: UITextView!
     @IBOutlet weak var activityLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         activityLabel.textAlignment = .Center
         goal1.editable = false
         goal2.editable = false
         goal3.editable = false
+        goal1.text = "Enter a goal here!"
+        goal2.text = "Enter a goal here!"
+        goal3.text = "Enter a goal here!"
+
         
         activityLabel.font = UIFont(name: "ArialRoundedMTBold", size: 20.0)
         doneButton.titleLabel?.font = UIFont(name: "ArialRoundedMTBold", size: 16.0)
@@ -59,7 +64,6 @@ class EditActivityViewController: UIViewController {
             }
         }
         if (foundActivity) {
-            //let index = activities.indexOf(currentlySelectedActivity)
             goal1.text = currActivity.goals[0]
             goal2.text = currActivity.goals[1]
             goal3.text = currActivity.goals[2]

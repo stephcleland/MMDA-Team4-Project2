@@ -3,15 +3,18 @@
 //  MMDA-Project2
 //
 //
-//  Written by Stephanie Cleland & Nate Winters on 4/3/16.
-//  Modified on:
-//  Copyright © 2016 Stephanie Cleland & Nate Winters. All rights reserved.
+//  Written by Stephanie Cleland, Nate Winters, & Steven Santos on 4/3/16.
+//  Modified on: 5/2/16
+//  Copyright © 2016 Stephanie Cleland, Nate Winters & Steven Santos. All rights reserved.
+//  Heroku Server written by: Alex Goldschmidt
 
 
 import UIKit
 
 class MainActivityViewController: UIViewController, UIPickerViewDataSource,UIPickerViewDelegate {
     var runningActivity = false
+    
+    // figure out valid activities for our different motions
     var pickerData = ["Bowling", "Teeth", "Hair"]
     @IBOutlet weak var startStopButton: UIButton!
     @IBOutlet weak var addButton: UIButton!
@@ -20,6 +23,12 @@ class MainActivityViewController: UIViewController, UIPickerViewDataSource,UIPic
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var myPicker: UIPickerView!
+    var responseString: NSString!
+    var startTime: String!
+    var endTime: String!
+    var activityData: [[Float]]!
+    var didGetServerData: Bool!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         myPicker.delegate = self
@@ -34,13 +43,10 @@ class MainActivityViewController: UIViewController, UIPickerViewDataSource,UIPic
         for activity in activities {
             pickerData.append(activity.name)
         }
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-                // Dispose of any resources that can be recreated.
     }
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
@@ -49,30 +55,129 @@ class MainActivityViewController: UIViewController, UIPickerViewDataSource,UIPic
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return pickerData.count
     }
-    //MARK: Delegates
+
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
 
         return pickerData[row]
     }
     
-    // record the timestamp when start and stop pressed
-    // when stop pressed, pull that specific time slice from the server to process
     @IBAction func startStopPressed(sender: AnyObject) {
         runningActivity = !runningActivity
         if (runningActivity) {
             // starting activity monitoring
             startStopView.backgroundColor = UIColor(hue: 0.025, saturation: 0.22, brightness: 0.92, alpha: 1.0)
             startStopButton.setTitle("Stop Activity", forState: .Normal)
+            
+            // record time stamp
+            startTime = getDateTime()
         } else {
             // stopping activity monitoring
             let feedbackVC = (self.storyboard?.instantiateViewControllerWithIdentifier("feedbackViewController") )! as UIViewController
-            //self.navigationController?.pushViewController(feedbackVC, animated: true)
-            //let feedbackVC = feedbackViewController()
             presentViewController(feedbackVC, animated: true, completion: nil)
             startStopButton.setTitle("Start Activity", forState: .Normal)
             startStopView.backgroundColor = UIColor(hue: 0.25, saturation: 0.22, brightness: 0.93, alpha: 1.0)
+            
+            // record time stamp
+            endTime = getDateTime()
+            
+            // Get data from the server
+            getServerData()
+            
+            // calculate duration
+            
+            // post all stuff to server to pull down to make graphs
+            
         }
     }
+    
+    func getServerData() {
+        
+        // only want to pull data from a very specific time slice from start time to end time
+        let url = NSURL(string: "https://guarded-hamlet-96865.herokuapp.com/gyro")
+        let request = NSMutableURLRequest(URL: url!)
+        request.HTTPMethod = "GET"
+        self.didGetServerData = false
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
+            data, response, error in
+            
+            if error != nil
+            {
+                print("error=\(error)")
+            }
+            
+            self.responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+            var data:String = self.responseString as String
+            _ = data.removeAtIndex(data.startIndex)
+            _ = data.removeAtIndex(data.startIndex.advancedBy(data.characters.count - 1))
+            data = data.stringByReplacingOccurrencesOfString("],[", withString: "]k[")
+            var new_data = data.componentsSeparatedByString("k")
+            self.activityData = []
+            let tempsize = new_data.count
+            
+            // parsing the returned string into an array of array that has the yaw, pitch, and roll
+            for i in 0 ..< tempsize {
+                let data_part = new_data[i]
+                var new_data_part = data_part.componentsSeparatedByString(",")
+                var new_float_part:[Float] = []
+                
+                for j in 0 ..< new_data_part.count {
+                    new_data_part[j] = new_data_part[j].stringByReplacingOccurrencesOfString("\"", withString: "")
+                    new_data_part[j] = new_data_part[j].stringByReplacingOccurrencesOfString("[", withString: "")
+                    new_data_part[j] = new_data_part[j].stringByReplacingOccurrencesOfString("]", withString: "")
+                    new_float_part.append(Float(new_data_part[j])!)
+                }
+                self.activityData.append(new_float_part)
+            }
+            self.didGetServerData = true
+            self.processData(200, yaw_pitch_roll_selector: 1)
+        }
+        
+        task.resume();
+    }
+    
+    func processData(degree_threshold:Float, yaw_pitch_roll_selector:Int) {
+
+        var max_degree:Float = 0
+        var activity_count = 0
+        var cross = false
+        for i in 0 ..< self.activityData.count {
+            if (self.activityData[i].count == 3) {
+                if (self.activityData[i][yaw_pitch_roll_selector] - self.activityData[0][yaw_pitch_roll_selector] > max_degree) {
+                    max_degree = self.activityData[i][yaw_pitch_roll_selector] - self.activityData[0][yaw_pitch_roll_selector]
+                }
+            }
+            if (self.activityData[i].count == 3 && self.activityData[i][yaw_pitch_roll_selector] > degree_threshold) {
+                cross = true
+            }
+            if (self.activityData[i].count == 3 && cross == true && self.activityData[i][yaw_pitch_roll_selector] < degree_threshold) {
+                cross = false
+                activity_count += 1
+            }
+        }
+        print(activity_count)
+        print(max_degree)
+    }
+    
+    func getDateTime() -> String {
+        let todaysDate:NSDate = NSDate()
+        let dateFormatter:NSDateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yyyy HH:mm"
+        let DateInFormat:String = dateFormatter.stringFromDate(todaysDate)
+        return DateInFormat
+        
+        /* 
+ let date = NSDate()
+ let calendar = NSCalendar.currentCalendar()
+ let components = calendar.components(.CalendarUnitHour | .CalendarUnitMinute | .CalendarUnitMonth | .CalendarUnitYear | .CalendarUnitDay, fromDate: date)
+ let hour = components.hour
+ let minutes = components.minute
+ let month = components.month
+ let year = components.year
+ let day = components.day
+         */
+ 
+    }
+    
     // this is where you do stuff with what is picked
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         currentlySelectedActivity = pickerData[row]
@@ -84,7 +189,6 @@ class MainActivityViewController: UIViewController, UIPickerViewDataSource,UIPic
         return myTitle
     }
     
-    /* better memory management version */
     func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView {
         var pickerLabel = view as! UILabel!
         if view == nil {  //if no label there yet

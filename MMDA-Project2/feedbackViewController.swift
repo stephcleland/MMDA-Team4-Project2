@@ -3,7 +3,7 @@
 //  MMDA-Project2
 //
 //  Written by Stephanie Cleland & Nate Winters on 4/6/16.
-//  Modified on:
+//  Modified on: 4/16/16
 //  Copyright © 2016 Stephanie Cleland & Nate Winters. All rights reserved.
 
 
@@ -36,7 +36,6 @@ class feedbackViewController: UIViewController, UITextViewDelegate {
         cuesDescriber.font = UIFont(name: "ArialRoundedMTBold", size: 15.0)
         assistanceQ.font = UIFont(name: "ArialRoundedMTBold", size: 15.0)
         assistanceDescriber.font = UIFont(name: "ArialRoundedMTBold", size: 15.0)
-        
         titleLabel.text = "Feedback for " + currentlySelectedActivity
         titleLabel.textAlignment = .Center
         cuesSlider.continuous = false

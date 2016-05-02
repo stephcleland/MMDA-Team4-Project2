@@ -126,7 +126,6 @@ public class PNLineChart: UIView{
 
             
             if showLabel {
-                print("show y label")
                 yLabels = yLabelsArray as NSArray
             }
             

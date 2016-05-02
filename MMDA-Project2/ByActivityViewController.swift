@@ -4,7 +4,7 @@
 //
 //
 //  Written by Stephanie Cleland & Nate Winters on 4/3/16.
-//  Modified on:
+//  Modified on: 5/4/16
 //  Copyright © 2016 Stephanie Cleland & Nate Winters. All rights reserved.
 //
 // Line chart and bar graph from: https://github.com/kevinzhow/PNChart-Swift
@@ -33,13 +33,10 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
         for activity in activities {
             pickerData.append(activity.name)
         }
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func drawBarChart () {
@@ -69,7 +66,6 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
         
         title = "Bar Chart"
         
-        
     }
     
     func drawLineGraph() {
@@ -89,7 +85,6 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
         lineChart.showCoordinateAxis = true
         lineChart.delegate = self
         
-        // Line Chart Nr.1
         var data01Array: [CGFloat] = [60.1, 160.1, 126.4, 262.2, 186.2, 127.2, 176.2]
         let data01:PNLineChartData = PNLineChartData()
         data01.color = PNGreenColor
@@ -117,7 +112,7 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return pickerData.count
     }
-    //MARK: Delegates
+
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
         return pickerData[row]
@@ -137,7 +132,6 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
     }
     
     
-    /* better memory management version */
     func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView {
         var pickerLabel = view as! UILabel!
         if view == nil {  //if no label there yet
@@ -175,15 +169,5 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
         print("Click  on bar \(barIndex)")
     }
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
