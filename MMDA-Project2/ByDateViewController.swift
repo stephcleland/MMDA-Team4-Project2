@@ -7,10 +7,11 @@
 //  Copyright © 2016 Stephanie Cleland & Nate Winters. All rights reserved.
 //
 // Line chart and bar graph from: https://github.com/kevinzhow/PNChart-Swift
+// EPCalendar from: https://github.com/ipraba/EPCalendarPicker
+
 
 import UIKit
 
-// EPCalendar from: https://github.com/ipraba/EPCalendarPicker
 
 class ByDateViewController: UIViewController, EPCalendarPickerDelegate, PNChartDelegate{
 
@@ -29,7 +30,9 @@ class ByDateViewController: UIViewController, EPCalendarPickerDelegate, PNChartD
         
         
         drawBarChart()
-            }
+    }
+    
+    // show the calendar to allow the user to pick a specific date
     @IBAction func viewCal(sender: AnyObject) {
         super.viewDidAppear(true)
         let calendarPicker = EPCalendarPicker(startYear: 2015, endYear: 2017, multiSelection: false, selectedDates: nil)
@@ -42,6 +45,7 @@ class ByDateViewController: UIViewController, EPCalendarPickerDelegate, PNChartD
         super.didReceiveMemoryWarning()
     }
     
+    // draw the bar chart to display the data associated with the date
     func drawBarChart () {
             let ChartLabel:UILabel = UILabel(frame: CGRectMake(0, 300, 320.0, 30))
             
@@ -72,6 +76,7 @@ class ByDateViewController: UIViewController, EPCalendarPickerDelegate, PNChartD
             
     }
     
+    // draw the line graph to display the data associated with the date
     func drawLineGraph() {
         
         let ChartLabel:UILabel = UILabel(frame: CGRectMake(0, 115, 320.0, 30))
@@ -109,6 +114,7 @@ class ByDateViewController: UIViewController, EPCalendarPickerDelegate, PNChartD
     }
     
     
+    // functions required for the functionality of the calendar picker
     func epCalendarPicker(_: EPCalendarPicker, didCancel error : NSError) {
         textViewDetail.text = "User cancelled selection"
         
@@ -124,7 +130,7 @@ class ByDateViewController: UIViewController, EPCalendarPickerDelegate, PNChartD
         textViewDetail.text = "Showing data for: \n\(dates)"
     }
     
-    
+    // functions that determine what to do if a bar or a point in the graph/chart is selected
     func userClickedOnLineKeyPoint(point: CGPoint, lineIndex: Int, keyPointIndex: Int)
     {
         print("Click Key on line \(point.x), \(point.y) line index is \(lineIndex) and point index is \(keyPointIndex)")

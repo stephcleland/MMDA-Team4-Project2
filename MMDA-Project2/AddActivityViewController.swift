@@ -41,12 +41,15 @@ class AddActivityViewController: UIViewController, UITableViewDelegate, UITableV
         super.didReceiveMemoryWarning()
     }
     
+    // store the name of the activity
     @IBAction func enter1Pressed(sender: AnyObject) {
         enterNameField.resignFirstResponder()
         activityName = enterNameField.text
         
     }
     
+    // the functions required for the functionality of the table view, used to select the motions
+    // associated with a specific activity
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.tableData.count;
 
@@ -67,6 +70,7 @@ class AddActivityViewController: UIViewController, UITableViewDelegate, UITableV
     
     }
     
+    // when the user is done adding a new activity, save the activity and its associated motions
     @IBAction func donePressed(sender: AnyObject) {
         let newActivity = Activity()
         newActivity.changeName(enterNameField.text!)

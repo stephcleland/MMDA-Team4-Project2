@@ -9,6 +9,7 @@
 
 import Foundation
 
+// class to store an activity and its associated goals and motions
 class Activity {
     var name: String
     var goals = ["", "", ""]

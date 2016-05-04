@@ -57,6 +57,8 @@ class EditActivityViewController: UIViewController {
         activityLabel.text = currentlySelectedActivity
         currActivity = Activity()
         var foundActivity = false
+        
+        // get the activity and its associated goals and motions to display
         for activity in activities {
             if (activity.name == currentlySelectedActivity) {
                 currActivity = activity
@@ -79,6 +81,7 @@ class EditActivityViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    // allows the user to edit the goals and save them
     @IBAction func editPressed(sender: AnyObject) {
         goal1.editable = !goal1.editable
         goal2.editable = !goal2.editable

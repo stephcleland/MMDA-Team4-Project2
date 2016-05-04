@@ -36,9 +36,17 @@ class ViewController: UIViewController, PNChartDelegate {
         byActivityButton.titleLabel?.font = UIFont(name: "ArialRoundedMTBold", size: 14.0)
         beginSessionButton.titleLabel?.font = UIFont(name: "ArialRoundedMTBold", size: 22.0)
 
-        // Get data from the server
-        /* want to get this from the gyro data we've edited
-        let url = NSURL(string: "https://guarded-hamlet-96865.herokuapp.com/gyro")
+        getServerData()
+
+        drawChart();
+        
+
+    }
+    
+    // get data from the server to display in the graphs
+    func getServerData() {
+        
+        let url = NSURL(string: "https://guarded-hamlet-96865.herokuapp.com/testget")
         let request = NSMutableURLRequest(URL: url!)
         request.HTTPMethod = "GET"
         
@@ -55,12 +63,8 @@ class ViewController: UIViewController, PNChartDelegate {
         }
         
         task.resume();
-        */
-
-        drawChart();
-        
-
     }
+
 
  
     // draws a line/bar chart with the data pulled from the server

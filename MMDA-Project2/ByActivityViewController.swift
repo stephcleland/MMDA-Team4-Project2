@@ -39,6 +39,7 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
         super.didReceiveMemoryWarning()
     }
     
+    // draw the bar chart to display the data associated with the activity
     func drawBarChart () {
         let ChartLabel:UILabel = UILabel(frame: CGRectMake(0, 115, 320.0, 30))
         
@@ -68,6 +69,7 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
         
     }
     
+    // draw the line graph to display the data associated with the activity
     func drawLineGraph() {
         
         let ChartLabel:UILabel = UILabel(frame: CGRectMake(0, 115, 320.0, 30))
@@ -105,6 +107,10 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
     }
 
     
+    
+    // all the picker view functions are for the formatting and functionality of the activity
+    // picker view
+    
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -118,7 +124,6 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
         return pickerData[row]
     }
 
-    // this is where you do stuff with what is picked
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         currActivity = pickerData[row]
         viewBy.text = "Viewing data for " + currActivity + ":"
@@ -154,6 +159,8 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
     }
     
     
+    
+    // functions that determine what to do if a bar or a point in the graph/chart is selected
     func userClickedOnLineKeyPoint(point: CGPoint, lineIndex: Int, keyPointIndex: Int)
     {
         print("Click Key on line \(point.x), \(point.y) line index is \(lineIndex) and point index is \(keyPointIndex)")

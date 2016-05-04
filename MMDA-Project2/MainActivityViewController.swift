@@ -43,24 +43,17 @@ class MainActivityViewController: UIViewController, UIPickerViewDataSource,UIPic
         for activity in activities {
             pickerData.append(activity.name)
         }
+        
+        
+        postToServer()
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerData.count
-    }
-
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-
-        return pickerData[row]
-    }
-    
+    // the button for stopping or starting the monitoring an activity
     @IBAction func startStopPressed(sender: AnyObject) {
         runningActivity = !runningActivity
         if (runningActivity) {
@@ -90,6 +83,8 @@ class MainActivityViewController: UIViewController, UIPickerViewDataSource,UIPic
         }
     }
     
+    
+    // get gyro data from the server once the activity is complete
     func getServerData() {
         
         // only want to pull data from a very specific time slice from start time to end time
@@ -135,6 +130,8 @@ class MainActivityViewController: UIViewController, UIPickerViewDataSource,UIPic
         task.resume();
     }
     
+    // motion detection - calculate the number of times the activity was completed and the maximum degree
+    // of movement acheived
     func processData(degree_threshold:Float, yaw_pitch_roll_selector:Int) {
 
         var max_degree:Float = 0
@@ -158,6 +155,36 @@ class MainActivityViewController: UIViewController, UIPickerViewDataSource,UIPic
         print(max_degree)
     }
     
+    // post the quantitative and qualitative data to the server, to be used later for graphs and data display
+    func postToServer() {
+        
+        // need to post: activity name, date of activity, activity count, max degree, activity duration,
+        //               amount of cues needed, amount of assistance needed
+        
+        let request = NSMutableURLRequest(URL: NSURL(string: "https://guarded-hamlet-96865.herokuapp.com/testpost")!)
+        request.HTTPMethod = "POST"
+        let postString = "id=13&name=Jack"
+        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
+            guard error == nil && data != nil else {
+                print("error=\(error)")
+                return
+            }
+            
+            if let httpStatus = response as? NSHTTPURLResponse where httpStatus.statusCode != 200 {
+                print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                print("response = \(response)")
+            }
+            
+            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+            print("responseString = \(responseString)")
+        }
+        task.resume()
+        
+    }
+    
+    // get the current date and time to calculate the duration of the activity and what data to
+    // pull from the server
     func getDateTime() -> String {
         let todaysDate:NSDate = NSDate()
         let dateFormatter:NSDateFormatter = NSDateFormatter()
@@ -178,7 +205,20 @@ class MainActivityViewController: UIViewController, UIPickerViewDataSource,UIPic
  
     }
     
-    // this is where you do stuff with what is picked
+    // convert time from milliseconds to NSDate
+    func msToDate(milliseconds: Int) -> NSDate {
+        let timeAsInt: Int = milliseconds
+        
+        let timeAsInterval: NSTimeInterval = Double(timeAsInt)/1000
+        
+        let theDate = NSDate(timeIntervalSince1970: timeAsInterval)
+        
+        return theDate
+        
+    }
+    
+    // all the picker view functions are for the formatting and functionality of the activity
+    // picker view
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         currentlySelectedActivity = pickerData[row]
     }
@@ -209,6 +249,18 @@ class MainActivityViewController: UIViewController, UIPickerViewDataSource,UIPic
     func pickerView(pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return 55.0
     }
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerData.count
+    }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        return pickerData[row]
+    }
+    
 
 
 
