@@ -9,7 +9,11 @@
 
 import UIKit
 
+var assistancePercent: Float!
+var cuesPercent: Float!
+
 class feedbackViewController: UIViewController, UITextViewDelegate {
+
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var cuesSlider: UISlider!
     @IBOutlet weak var assistanceSlider: UISlider!
@@ -44,7 +48,43 @@ class feedbackViewController: UIViewController, UITextViewDelegate {
         cuesDescriber.text = cuesDescribers[2]
         commentsField.text = "Any other comments on today's activity?"
         self.commentsField.delegate = self
+        assistancePercent = 0.5
+        cuesPercent = 0.5
         
+        
+    }
+    
+    // when user is done giving qualitative feedback, post all data to
+    // the server
+    @IBAction func donePressed(sender: AnyObject) {
+        postToServer()
+    }
+    
+    // post the quantitative and qualitative data to the server, to be used later for graphs and data display
+    func postToServer() {
+        
+        // need to post: activity name, date of activity, activity count, max degree, activity duration,
+        //               amount of cues needed, amount of assistance needed
+        
+        let request = NSMutableURLRequest(URL: NSURL(string: "https://guarded-hamlet-96865.herokuapp.com/testpost")!)
+        request.HTTPMethod = "POST"
+        let postString = "duration="+String(duration)+"&count="+String(activity_count)+"&activity="+currentlySelectedActivity+"&maxdegree="+String(max_degree)+"&cues="+String(cuesPercent)+"&assist="+String(assistancePercent)+"&time="+startTime
+        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
+            guard error == nil && data != nil else {
+                print("error=\(error)")
+                return
+            }
+            
+            if let httpStatus = response as? NSHTTPURLResponse where httpStatus.statusCode != 200 {
+                print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                print("response = \(response)")
+            }
+            
+            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+            print("responseString = \(responseString)")
+        }
+        task.resume()
         
     }
     
@@ -74,6 +114,7 @@ class feedbackViewController: UIViewController, UITextViewDelegate {
             text = assistanceDescribers[4]
         }
         sender.value = next / 100
+        assistancePercent = next / 100
         assistanceDescriber.text = text
     }
     
@@ -107,6 +148,7 @@ class feedbackViewController: UIViewController, UITextViewDelegate {
             text = cuesDescribers[5]
         }
         sender.value = next / 100
+        cuesPercent = next / 100
         cuesDescriber.text = text
 
     }
@@ -133,6 +175,8 @@ class feedbackViewController: UIViewController, UITextViewDelegate {
         UIView.commitAnimations()
         
     }
+    
+
     
 }
 

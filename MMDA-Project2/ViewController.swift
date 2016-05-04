@@ -15,6 +15,7 @@ import UIKit
 
 var activities = [Activity]()
 var currentlySelectedActivity = ""
+var serverData: NSArray!
 
 class ViewController: UIViewController, PNChartDelegate {
 
@@ -37,9 +38,7 @@ class ViewController: UIViewController, PNChartDelegate {
         beginSessionButton.titleLabel?.font = UIFont(name: "ArialRoundedMTBold", size: 22.0)
 
         getServerData()
-
-        drawChart();
-        
+        //self.drawChart()
 
     }
     
@@ -59,25 +58,40 @@ class ViewController: UIViewController, PNChartDelegate {
             }
             
             let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-            print("responseString = \(responseString!)")
+            serverData = self.convertStringToDictionary(responseString!)
+            dispatch_async(dispatch_get_main_queue()) {
+                self.drawChart()
+            }
         }
         
         task.resume();
     }
 
 
+    // convert what is returned from the server into an NSArray
+    func convertStringToDictionary(text: NSString) -> NSArray? {
+        let data = text.dataUsingEncoding(NSUTF8StringEncoding)
+        do {
+            let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers)
+            return json as! NSArray
+        } catch {
+            print("Something went wrong")
+        }
+        return nil
+        
+    }
  
     // draws a line/bar chart with the data pulled from the server
     func drawChart() {
-        
+        print("in here")
         let ChartLabel:UILabel = UILabel(frame: CGRectMake(0, 115, 320.0, 30))
         ChartLabel.textColor = PNGreenColor
         ChartLabel.font = UIFont(name: "Avenir-Medium", size:23.0)
         ChartLabel.textAlignment = NSTextAlignment.Center
         
         // Bar Chart
-        /*
-         ChartLabel.text = "Bar Chart"
+        
+         ChartLabel.text = "Activity Completions"
          
          let barChart = PNBarChart(frame: CGRectMake(0, 150.0, 320.0, 200.0))
          barChart.backgroundColor = UIColor.clearColor()
@@ -86,8 +100,22 @@ class ViewController: UIViewController, PNChartDelegate {
          
          
          barChart.labelMarginTop = 5.0
-         barChart.xLabels = ["SEP 1","SEP 2","SEP 3","SEP 4","SEP 5","SEP 6","SEP 7"]
-         barChart.yValues = [1,24,12,18,30,10,21]
+        
+         var xlab:[String] = []
+         for i in 0 ..< serverData.count {
+            let activity = serverData[i]["activity"] as? NSString as! String
+            if (!xlab.contains(activity)) {
+                xlab.append(activity)
+            }
+         }
+        var yvals = [Int](count: xlab.count, repeatedValue: 0)
+        for i in 0 ..< serverData.count {
+            let activity = serverData[i]["activity"] as? NSString as! String
+            let index = xlab.indexOf(activity)
+            yvals[index!] += 1
+        }
+         barChart.xLabels = xlab
+         barChart.yValues = yvals
          barChart.strokeChart()
          
          barChart.delegate = self
@@ -96,36 +124,6 @@ class ViewController: UIViewController, PNChartDelegate {
          view.addSubview(barChart)
          
          title = "Bar Chart"
-         */
-        
-        // Line Chart
-        ChartLabel.text = "Line Chart"
-        
-        let lineChart:PNLineChart = PNLineChart(frame: CGRectMake(10, 150.0, 300, 200.0))
-        lineChart.yLabelFormat = "%1.1f"
-        lineChart.showLabel = true
-        lineChart.backgroundColor = UIColor.clearColor()
-        lineChart.xLabels = ["SEP 1","SEP 2","SEP 3","SEP 4","SEP 5","SEP 6","SEP 7"]
-        lineChart.showCoordinateAxis = true
-        lineChart.delegate = self
-        
-        var data01Array: [CGFloat] = [60.1, 160.1, 126.4, 262.2, 186.2, 127.2, 176.2]
-        let data01:PNLineChartData = PNLineChartData()
-        data01.color = PNGreenColor
-        data01.itemCount = data01Array.count
-        data01.inflexionPointStyle = PNLineChartData.PNLineChartPointStyle.PNLineChartPointStyleCycle
-        data01.getData = ({(index: Int) -> PNLineChartDataItem in
-            let yValue:CGFloat = data01Array[index]
-            let item = PNLineChartDataItem(y: yValue)
-            return item
-        })
-        
-        lineChart.chartData = [data01]
-        lineChart.strokeChart()
-        
-        view.addSubview(lineChart)
-        view.addSubview(ChartLabel)
-        title = "Line Chart"
         
     }
     

@@ -11,6 +11,11 @@
 
 import UIKit
 
+var activity_count: Int!
+var max_degree: Float!
+var duration: Int!
+var startTime: String!
+
 class MainActivityViewController: UIViewController, UIPickerViewDataSource,UIPickerViewDelegate {
     var runningActivity = false
     
@@ -24,10 +29,10 @@ class MainActivityViewController: UIViewController, UIPickerViewDataSource,UIPic
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var myPicker: UIPickerView!
     var responseString: NSString!
-    var startTime: String!
     var endTime: String!
-    var activityData: [[Float]]!
+    var activityData: NSArray!
     var didGetServerData: Bool!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,9 +48,7 @@ class MainActivityViewController: UIViewController, UIPickerViewDataSource,UIPic
         for activity in activities {
             pickerData.append(activity.name)
         }
-        
-        
-        postToServer()
+        currentlySelectedActivity = pickerData[0]
         
     }
 
@@ -75,11 +78,6 @@ class MainActivityViewController: UIViewController, UIPickerViewDataSource,UIPic
             
             // Get data from the server
             getServerData()
-            
-            // calculate duration
-            
-            // post all stuff to server to pull down to make graphs
-            
         }
     }
     
@@ -101,28 +99,7 @@ class MainActivityViewController: UIViewController, UIPickerViewDataSource,UIPic
             }
             
             self.responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-            var data:String = self.responseString as String
-            _ = data.removeAtIndex(data.startIndex)
-            _ = data.removeAtIndex(data.startIndex.advancedBy(data.characters.count - 1))
-            data = data.stringByReplacingOccurrencesOfString("],[", withString: "]k[")
-            var new_data = data.componentsSeparatedByString("k")
-            self.activityData = []
-            let tempsize = new_data.count
-            
-            // parsing the returned string into an array of array that has the yaw, pitch, and roll
-            for i in 0 ..< tempsize {
-                let data_part = new_data[i]
-                var new_data_part = data_part.componentsSeparatedByString(",")
-                var new_float_part:[Float] = []
-                
-                for j in 0 ..< new_data_part.count {
-                    new_data_part[j] = new_data_part[j].stringByReplacingOccurrencesOfString("\"", withString: "")
-                    new_data_part[j] = new_data_part[j].stringByReplacingOccurrencesOfString("[", withString: "")
-                    new_data_part[j] = new_data_part[j].stringByReplacingOccurrencesOfString("]", withString: "")
-                    new_float_part.append(Float(new_data_part[j])!)
-                }
-                self.activityData.append(new_float_part)
-            }
+            self.activityData = self.convertStringToDictionary(self.responseString)
             self.didGetServerData = true
             self.processData(200, yaw_pitch_roll_selector: 1)
         }
@@ -133,67 +110,49 @@ class MainActivityViewController: UIViewController, UIPickerViewDataSource,UIPic
     // motion detection - calculate the number of times the activity was completed and the maximum degree
     // of movement acheived
     func processData(degree_threshold:Float, yaw_pitch_roll_selector:Int) {
-
-        var max_degree:Float = 0
-        var activity_count = 0
+        max_degree = 0
+        activity_count = 0
         var cross = false
         for i in 0 ..< self.activityData.count {
-            if (self.activityData[i].count == 3) {
-                if (self.activityData[i][yaw_pitch_roll_selector] - self.activityData[0][yaw_pitch_roll_selector] > max_degree) {
-                    max_degree = self.activityData[i][yaw_pitch_roll_selector] - self.activityData[0][yaw_pitch_roll_selector]
+           // let time = self.activityData[i]["time"] as? NSNumber
+            let data = self.activityData[i]["data"] as? NSArray
+            let initData = self.activityData[0]["data"] as? NSArray
+            if (data!.count == 3) {
+                let curr_val = Float(data![yaw_pitch_roll_selector] as! String)!
+                let init_val = Float(initData![yaw_pitch_roll_selector] as! String)!
+                let curr_degree = curr_val - init_val
+                if(curr_degree > max_degree) {
+                    max_degree = curr_degree
+                }
+                if (curr_val > degree_threshold) {
+                    cross = true
+                }
+                if (cross == true && curr_val < degree_threshold) {
+                    cross = false
+                    activity_count = activity_count + 1
                 }
             }
-            if (self.activityData[i].count == 3 && self.activityData[i][yaw_pitch_roll_selector] > degree_threshold) {
-                cross = true
-            }
-            if (self.activityData[i].count == 3 && cross == true && self.activityData[i][yaw_pitch_roll_selector] < degree_threshold) {
-                cross = false
-                activity_count += 1
-            }
-        }
-        print(activity_count)
-        print(max_degree)
-    }
-    
-    // post the quantitative and qualitative data to the server, to be used later for graphs and data display
-    func postToServer() {
-        
-        // need to post: activity name, date of activity, activity count, max degree, activity duration,
-        //               amount of cues needed, amount of assistance needed
-        
-        let request = NSMutableURLRequest(URL: NSURL(string: "https://guarded-hamlet-96865.herokuapp.com/testpost")!)
-        request.HTTPMethod = "POST"
-        let postString = "id=13&name=Jack"
-        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
-        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
-            guard error == nil && data != nil else {
-                print("error=\(error)")
-                return
-            }
             
-            if let httpStatus = response as? NSHTTPURLResponse where httpStatus.statusCode != 200 {
-                print("statusCode should be 200, but is \(httpStatus.statusCode)")
-                print("response = \(response)")
-            }
-            
-            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-            print("responseString = \(responseString)")
         }
-        task.resume()
-        
+        duration = (self.activityData[activityData.count - 1]["time"] as? NSNumber as! Int) - (self.activityData[0]["time"] as? NSNumber as! Int)
+        duration = (duration / 1000) / 60
     }
     
     // get the current date and time to calculate the duration of the activity and what data to
     // pull from the server
     func getDateTime() -> String {
+        /*
         let todaysDate:NSDate = NSDate()
         let dateFormatter:NSDateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "MM-dd-yyyy HH:mm"
         let DateInFormat:String = dateFormatter.stringFromDate(todaysDate)
         return DateInFormat
-        
-        /* 
- let date = NSDate()
+        */
+
+        let date = NSDate()
+        let time = Int(date.timeIntervalSince1970 * 1000)
+        return String(time)
+        /*
  let calendar = NSCalendar.currentCalendar()
  let components = calendar.components(.CalendarUnitHour | .CalendarUnitMinute | .CalendarUnitMonth | .CalendarUnitYear | .CalendarUnitDay, fromDate: date)
  let hour = components.hour
@@ -261,7 +220,18 @@ class MainActivityViewController: UIViewController, UIPickerViewDataSource,UIPic
         return pickerData[row]
     }
     
-
+    // convert what is returned from the server into an NSArray
+    func convertStringToDictionary(text: NSString) -> NSArray? {
+        let data = text.dataUsingEncoding(NSUTF8StringEncoding)
+        do {
+            let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers)
+                return json as! NSArray
+         } catch {
+                print("Something went wrong")
+         }
+         return nil
+        
+    }
 
 
 }
