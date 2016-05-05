@@ -64,10 +64,8 @@ class AddActivityViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print(indexPath.row)
         
         
-    
     }
     
     // when the user is done adding a new activity, save the activity and its associated motions

@@ -18,7 +18,7 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var myPicker: UIPickerView!
     var pickerData = ["Bowling", "Teeth", "Hair"]
-    var currActivity = ""
+    var currActivity = "Bowling"
 
     override func viewDidLoad() {
         
@@ -33,39 +33,59 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
         for activity in activities {
             pickerData.append(activity.name)
         }
+        
+        currActivity = pickerData[0]
+        displayData()
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+
     
-    // draw the bar chart to display the data associated with the activity
-    func drawBarChart () {
-        let ChartLabel:UILabel = UILabel(frame: CGRectMake(0, 115, 320.0, 30))
+    func displayData() {
         
-        ChartLabel.textColor = PNGreenColor
-        ChartLabel.font = UIFont(name: "Avenir-Medium", size:23.0)
-        ChartLabel.textAlignment = NSTextAlignment.Center
+        var count:Float = 0.0
+        var cues:Float = 0.0
+        var assist:Float = 0.0
+        var duration:Float = 0.0
+        var numCompletions:Float = 0.0
+        for i in 0 ..< serverData.count {
+            let activity = serverData[i]["activity"] as? NSString as! String
+            if (activity == currActivity) {
+                count += 1
+                print((serverData[i]["cues"] as? NSString)!.floatValue)
+                var temp = (serverData[i]["cues"] as? NSString)!.floatValue
+                print ("cues:")
+                print(temp)
+                cues = cues + temp
+                temp = (serverData[i]["assist"] as? NSString)!.floatValue
+                assist = assist + (temp)
+                temp = (serverData[i]["count"] as? NSString)!.floatValue
+                numCompletions = numCompletions + (temp)
+                temp = (serverData[i]["duration"] as? NSString)!.floatValue
+                duration = duration + (temp)
+                
+
+            }
+        }
         
-        ChartLabel.text = "Bar Chart"
+        print(count)
+        if (count != 0) {
+            cues = cues / count
+            assist = assist / count
+            numCompletions = numCompletions / count
+            duration = duration / count
+        }
         
-        let barChart = PNBarChart(frame: CGRectMake(0, 135.0, 320.0, 200.0))
-        barChart.backgroundColor = UIColor.clearColor()
+        print(cues)
+        print(assist)
+        print(numCompletions)
+        print(duration)
         
-        barChart.animationType = .Waterfall
+        drawLineGraph()
         
-        
-        barChart.labelMarginTop = 5.0
-        barChart.xLabels = ["SEP 1","SEP 2","SEP 3","SEP 4","SEP 5","SEP 6","SEP 7"]
-        barChart.yValues = [1,24,12,18,30,10,21]
-        barChart.strokeChart()
-        
-        barChart.delegate = self
-        
-        view.addSubview(ChartLabel)
-        view.addSubview(barChart)
-        
-        title = "Bar Chart"
         
     }
     
@@ -79,15 +99,77 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
         ChartLabel.textAlignment = NSTextAlignment.Center
         ChartLabel.text = "Line Chart"
         
-        let lineChart:PNLineChart = PNLineChart(frame: CGRectMake(0, 150.0, 320, 200.0))
+        let lineChart:PNLineChart = PNLineChart(frame: CGRectMake(0, 300.0, 320, 200.0))
         lineChart.yLabelFormat = "%1.1f"
         lineChart.showLabel = true
         lineChart.backgroundColor = UIColor.clearColor()
-        lineChart.xLabels = ["SEP 1","SEP 2","SEP 3","SEP 4","SEP 5","SEP 6","SEP 7"]
+        
+        var xlab:[String] = []
+        for i in 0 ..< serverData.count {
+            // XLABEL FOR DATES
+            let temp = serverData[i]["time"] as? NSString
+            if (temp != nil) {
+                let time = temp!.doubleValue / 1000
+                let timeDate = NSDate(timeIntervalSince1970: time)
+                let formatter = NSDateFormatter()
+                formatter.dateFormat = "MM-dd-yyyy"
+                let dateString = formatter.stringFromDate(timeDate)
+                
+                let temp = serverData[i]["activity"] as? NSString
+                let activity = temp as! String
+                if (!xlab.contains(dateString) && activity == currActivity) {
+                    xlab.append(dateString)
+                }
+            }
+        }
+        print("HI TEST")
+        print(xlab)
+        print(xlab.count)
+        var yDurations = [CGFloat](count: xlab.count, repeatedValue: CGFloat(0))
+
+        for i in 0 ..< serverData.count {
+            //Activity
+            let act = serverData[i]["activity"] as? NSString
+            let activity = act as! String
+            //Dates
+            var dateString:String = ""
+            var temp = serverData[i]["time"] as? NSString
+            if (temp != nil) {
+                let time = temp!.doubleValue / 1000
+                let timeDate = NSDate(timeIntervalSince1970: time)
+                let formatter = NSDateFormatter()
+                formatter.dateFormat = "MM-dd-yyyy"
+                dateString = formatter.stringFromDate(timeDate)
+            }
+            temp = serverData[i]["duration"] as? NSString
+            if (temp != nil && dateString != "") {
+                let duration = temp!.intValue
+                let temp = xlab.indexOf(dateString)
+                if (temp != nil && activity == currActivity) {
+                    let index = temp!
+                    print("it's happening")
+                    print(yDurations[index])
+                    print(CGFloat(duration))
+                    yDurations[index] = yDurations[index] + CGFloat(duration)
+                }
+            }
+        }
+        
+        print(xlab)
+        print(yDurations)
+        let max = yDurations.maxElement()
+        print(max)
+        for i in 0 ..< yDurations.count {
+            print("change")
+            print(yDurations[i])
+            yDurations[i] = yDurations[i] / max!
+            print(yDurations[i])
+        }
+        
+        lineChart.xLabels = xlab
         lineChart.showCoordinateAxis = true
         lineChart.delegate = self
-        
-        var data01Array: [CGFloat] = [60.1, 160.1, 126.4, 262.2, 186.2, 127.2, 176.2]
+        var data01Array: [CGFloat] = yDurations
         let data01:PNLineChartData = PNLineChartData()
         data01.color = PNGreenColor
         data01.itemCount = data01Array.count
@@ -97,12 +179,17 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
             let item = PNLineChartDataItem(y: yValue)
             return item
         })
+        print(data01Array)
         
-        lineChart.chartData = [data01]
+        lineChart.chartData = [data01]//, data02, data03]
+
         lineChart.strokeChart()
-        
+        lineChart.tag = 13
+        //ChartLabel.tag = 14
+        view.viewWithTag(13)?.removeFromSuperview()
+        //view.viewWithTag(14)?.removeFromSuperview()
         view.addSubview(lineChart)
-        view.addSubview(ChartLabel)
+        //view.addSubview(ChartLabel)
         title = "Line Chart"
     }
 
@@ -127,6 +214,9 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         currActivity = pickerData[row]
         viewBy.text = "Viewing data for " + currActivity + ":"
+        
+        // display the data for the newly selected activity
+        displayData()
 
     }
     
@@ -157,7 +247,6 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
     func pickerView(pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return 35.0
     }
-    
     
     
     // functions that determine what to do if a bar or a point in the graph/chart is selected

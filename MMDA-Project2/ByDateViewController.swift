@@ -29,7 +29,7 @@ class ByDateViewController: UIViewController, EPCalendarPickerDelegate, PNChartD
         textViewDetail.font = UIFont(name: "ArialRoundedMTBold", size: 17.0)
         
         
-        drawBarChart()
+        drawLineGraph()
     }
     
     // show the calendar to allow the user to pick a specific date

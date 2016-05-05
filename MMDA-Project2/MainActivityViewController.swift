@@ -21,6 +21,10 @@ class MainActivityViewController: UIViewController, UIPickerViewDataSource,UIPic
     
     // figure out valid activities for our different motions
     var pickerData = ["Bowling", "Teeth", "Hair"]
+    var yawPitchRoll = [1, 0, 2, 2]
+    var degreeThresholds: [Float] = [200.0, 200.0, 200.0, 200.0]
+    var motions = ["Shoulder Flexion", "Shoulder Horizontal Adduction", "Elbow Supination", "Elbow Pronation"]
+    
     @IBOutlet weak var startStopButton: UIButton!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var editButton: UIButton!
@@ -101,7 +105,21 @@ class MainActivityViewController: UIViewController, UIPickerViewDataSource,UIPic
             self.responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
             self.activityData = self.convertStringToDictionary(self.responseString)
             self.didGetServerData = true
-            self.processData(200, yaw_pitch_roll_selector: 1)
+            
+            // send in the correct degree threshold depending on motion, and whether we're looking
+            // at yaw, pitch, or roll
+            var yprVal = self.yawPitchRoll[0]
+            var degreeThreshold = self.degreeThresholds[0]
+            for activity in activities {
+                if (activity.name == currentlySelectedActivity) {
+                    yprVal = self.yawPitchRoll[self.motions.indexOf(activity.motions[0])!]
+                    degreeThreshold = self.degreeThresholds[self.motions.indexOf(activity.motions[0])!]
+                }
+                
+            }
+            
+            
+            self.processData(degreeThreshold, yaw_pitch_roll_selector: yprVal)
         }
         
         task.resume();
@@ -141,27 +159,11 @@ class MainActivityViewController: UIViewController, UIPickerViewDataSource,UIPic
     // get the current date and time to calculate the duration of the activity and what data to
     // pull from the server
     func getDateTime() -> String {
-        /*
-        let todaysDate:NSDate = NSDate()
-        let dateFormatter:NSDateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "MM-dd-yyyy HH:mm"
-        let DateInFormat:String = dateFormatter.stringFromDate(todaysDate)
-        return DateInFormat
-        */
 
         let date = NSDate()
         let time = Int(date.timeIntervalSince1970 * 1000)
         return String(time)
-        /*
- let calendar = NSCalendar.currentCalendar()
- let components = calendar.components(.CalendarUnitHour | .CalendarUnitMinute | .CalendarUnitMonth | .CalendarUnitYear | .CalendarUnitDay, fromDate: date)
- let hour = components.hour
- let minutes = components.minute
- let month = components.month
- let year = components.year
- let day = components.day
-         */
- 
+
     }
     
     // convert time from milliseconds to NSDate
