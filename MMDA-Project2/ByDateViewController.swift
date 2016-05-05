@@ -13,13 +13,21 @@
 import UIKit
 
 
+
 class ByDateViewController: UIViewController, EPCalendarPickerDelegate, PNChartDelegate{
+    @IBOutlet weak var averageLabel: UILabel!
 
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var viewCalButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var textViewDetail: UILabel!
-
+    @IBOutlet weak var Cues: UILabel!
+    @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var assistLabel: UILabel!
+    @IBOutlet weak var cuesLabel: UILabel!
+    @IBOutlet weak var Duration: UILabel!
+    @IBOutlet weak var Assist: UILabel!
+    var dateString: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,9 +35,22 @@ class ByDateViewController: UIViewController, EPCalendarPickerDelegate, PNChartD
         viewCalButton.titleLabel?.font = UIFont(name: "ArialRoundedMTBold", size: 21.0)
         titleLabel.font = UIFont(name: "ArialRoundedMTBold", size: 19.0)
         textViewDetail.font = UIFont(name: "ArialRoundedMTBold", size: 17.0)
+        cuesLabel.font = UIFont(name: "ArialRoundedMTBold", size: 15.0)
+        assistLabel.font = UIFont(name: "ArialRoundedMTBold", size: 15.0)
+        durationLabel.font = UIFont(name: "ArialRoundedMTBold", size: 15.0)
+        Cues.font = UIFont(name: "ArialRoundedMTBold", size: 17.0)
+        Assist.font = UIFont(name: "ArialRoundedMTBold", size: 17.0)
+        Duration.font = UIFont(name: "ArialRoundedMTBold", size: 17.0)
+        averageLabel.font = UIFont(name: "ArialRoundedMTBold", size: 17.0)
         
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "MM-dd-yyyy"
+        let date = NSDate()
+        dateString = formatter.stringFromDate(date)
+        textViewDetail.text = "Showing data for " + dateString
+
+        displayData()
         
-        drawLineGraph()
     }
     
     // show the calendar to allow the user to pick a specific date
@@ -45,6 +66,57 @@ class ByDateViewController: UIViewController, EPCalendarPickerDelegate, PNChartD
         super.didReceiveMemoryWarning()
     }
     
+    func displayData() {
+        
+        var count:Float = 0.0
+        var cues:Float = 0.0
+        var assist:Float = 0.0
+        var duration:Float = 0.0
+        var numCompletions:Float = 0.0
+        for i in 0 ..< serverData.count {
+            
+            let temp = serverData[i]["time"] as? NSString
+            if (temp != nil) {
+                let time = temp!.doubleValue / 1000
+                let timeDate = NSDate(timeIntervalSince1970: time)
+                let formatter = NSDateFormatter()
+                formatter.dateFormat = "MM-dd-yyyy"
+                let date = formatter.stringFromDate(timeDate)
+                if (date == dateString) {
+                    print("HERE")
+                    count += 1
+                    print((serverData[i]["cues"] as? NSString)!.floatValue)
+                    var temp = (serverData[i]["cues"] as? NSString)!.floatValue
+                    cues = cues + temp
+                    temp = (serverData[i]["assist"] as? NSString)!.floatValue
+                    assist = assist + (temp)
+                    temp = (serverData[i]["count"] as? NSString)!.floatValue
+                    numCompletions = numCompletions + (temp)
+                    temp = (serverData[i]["duration"] as? NSString)!.floatValue
+                    duration = duration + (temp)
+                    
+                }
+
+            }
+            
+        }
+        
+        if (count != 0) {
+            cues = cues / count
+            assist = assist / count
+            numCompletions = numCompletions / count
+        }
+        
+        Cues.text = String(cues*100) + "%"
+        Assist.text = String(assist*100) + "%"
+        Duration.text = String(Int(duration)) + " min"
+        
+        drawBarChart()
+        
+        
+    }
+    
+    
     // draw the bar chart to display the data associated with the date
     func drawBarChart () {
             let ChartLabel:UILabel = UILabel(frame: CGRectMake(0, 300, 320.0, 30))
@@ -55,7 +127,7 @@ class ByDateViewController: UIViewController, EPCalendarPickerDelegate, PNChartD
         
              ChartLabel.text = "Bar Chart"
              
-             let barChart = PNBarChart(frame: CGRectMake(0, 335, 320.0, 200.0))
+             let barChart = PNBarChart(frame: CGRectMake(0, 300.0, 320, 150.0))
              barChart.backgroundColor = UIColor.clearColor()
              
              barChart.animationType = .Waterfall
@@ -67,8 +139,8 @@ class ByDateViewController: UIViewController, EPCalendarPickerDelegate, PNChartD
              barChart.strokeChart()
              
              barChart.delegate = self
-             
-             view.addSubview(ChartLabel)
+            barChart.tag = 13
+            view.viewWithTag(13)?.removeFromSuperview()
              view.addSubview(barChart)
              
              title = "Bar Chart"
@@ -121,9 +193,11 @@ class ByDateViewController: UIViewController, EPCalendarPickerDelegate, PNChartD
     }
     func epCalendarPicker(_: EPCalendarPicker, didSelectDate date : NSDate) {
         let formatter = NSDateFormatter()
-        formatter.dateFormat = "MM/dd/yyyy"
-        let dateString = formatter.stringFromDate(date)
+        formatter.dateFormat = "MM-dd-yyyy"
+        dateString = formatter.stringFromDate(date)
         textViewDetail.text = "Showing data for " + dateString
+        displayData()
+
         
     }
     func epCalendarPicker(_: EPCalendarPicker, didSelectMultipleDate dates : [NSDate]) {

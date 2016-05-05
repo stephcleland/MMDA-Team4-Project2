@@ -13,8 +13,15 @@ import UIKit
 
 class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPickerViewDelegate, PNChartDelegate {
 
+    @IBOutlet weak var averageLabel: UILabel!
     @IBOutlet weak var viewBy: UILabel!
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var Duration: UILabel!
+    @IBOutlet weak var Assist: UILabel!
+    @IBOutlet weak var Cues: UILabel!
+    @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var assistLabel: UILabel!
+    @IBOutlet weak var cuesLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var myPicker: UIPickerView!
     var pickerData = ["Bowling", "Teeth", "Hair"]
@@ -27,6 +34,14 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
         backButton.titleLabel?.font = UIFont(name: "ArialRoundedMTBold", size: 15.0)
         viewBy.font = UIFont(name: "ArialRoundedMTBold", size: 17.0)
         titleLabel.font = UIFont(name: "ArialRoundedMTBold", size: 19.0)
+        cuesLabel.font = UIFont(name: "ArialRoundedMTBold", size: 15.0)
+        assistLabel.font = UIFont(name: "ArialRoundedMTBold", size: 15.0)
+        durationLabel.font = UIFont(name: "ArialRoundedMTBold", size: 15.0)
+        Cues.font = UIFont(name: "ArialRoundedMTBold", size: 17.0)
+        Assist.font = UIFont(name: "ArialRoundedMTBold", size: 17.0)
+        Duration.font = UIFont(name: "ArialRoundedMTBold", size: 17.0)
+        averageLabel.font = UIFont(name: "ArialRoundedMTBold", size: 17.0)
+
         
         myPicker.delegate = self
         myPicker.dataSource = self
@@ -35,6 +50,7 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
         }
         
         currActivity = pickerData[0]
+        viewBy.text = "Max Degree Change for " + currActivity + ":"
         displayData()
 
     }
@@ -71,7 +87,6 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
             }
         }
         
-        print(count)
         if (count != 0) {
             cues = cues / count
             assist = assist / count
@@ -79,10 +94,9 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
             duration = duration / count
         }
         
-        print(cues)
-        print(assist)
-        print(numCompletions)
-        print(duration)
+        Cues.text = String(cues*100) + "%"
+        Assist.text = String(assist*100) + "%"
+        Duration.text = String(Int(duration)) + " min"
         
         drawLineGraph()
         
@@ -99,7 +113,7 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
         ChartLabel.textAlignment = NSTextAlignment.Center
         ChartLabel.text = "Line Chart"
         
-        let lineChart:PNLineChart = PNLineChart(frame: CGRectMake(0, 300.0, 320, 200.0))
+        let lineChart:PNLineChart = PNLineChart(frame: CGRectMake(0, 300.0, 320, 150.0))
         lineChart.yLabelFormat = "%1.1f"
         lineChart.showLabel = true
         lineChart.backgroundColor = UIColor.clearColor()
@@ -114,7 +128,6 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
                 let formatter = NSDateFormatter()
                 formatter.dateFormat = "MM-dd-yyyy"
                 let dateString = formatter.stringFromDate(timeDate)
-                
                 let temp = serverData[i]["activity"] as? NSString
                 let activity = temp as! String
                 if (!xlab.contains(dateString) && activity == currActivity) {
@@ -144,9 +157,9 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
             temp = serverData[i]["duration"] as? NSString
             if (temp != nil && dateString != "") {
                 let duration = temp!.intValue
-                let temp = xlab.indexOf(dateString)
-                if (temp != nil && activity == currActivity) {
-                    let index = temp!
+                let temp2 = xlab.indexOf(dateString)
+                if (temp2 != nil && activity == currActivity) {
+                    let index = temp2!
                     print("it's happening")
                     print(yDurations[index])
                     print(CGFloat(duration))
@@ -155,6 +168,7 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
             }
         }
         
+        /*
         print(xlab)
         print(yDurations)
         let max = yDurations.maxElement()
@@ -165,10 +179,12 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
             yDurations[i] = yDurations[i] / max!
             print(yDurations[i])
         }
+        */
         
         lineChart.xLabels = xlab
         lineChart.showCoordinateAxis = true
         lineChart.delegate = self
+        print(yDurations)
         var data01Array: [CGFloat] = yDurations
         let data01:PNLineChartData = PNLineChartData()
         data01.color = PNGreenColor
@@ -179,18 +195,12 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
             let item = PNLineChartDataItem(y: yValue)
             return item
         })
-        print(data01Array)
-        
         lineChart.chartData = [data01]//, data02, data03]
-
         lineChart.strokeChart()
         lineChart.tag = 13
-        //ChartLabel.tag = 14
         view.viewWithTag(13)?.removeFromSuperview()
-        //view.viewWithTag(14)?.removeFromSuperview()
         view.addSubview(lineChart)
-        //view.addSubview(ChartLabel)
-        title = "Line Chart"
+
     }
 
     
@@ -213,7 +223,7 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
 
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         currActivity = pickerData[row]
-        viewBy.text = "Viewing data for " + currActivity + ":"
+        viewBy.text = "Max Degree Change for " + currActivity + ":"
         
         // display the data for the newly selected activity
         displayData()

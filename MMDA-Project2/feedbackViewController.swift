@@ -68,6 +68,7 @@ class feedbackViewController: UIViewController, UITextViewDelegate {
         
         let request = NSMutableURLRequest(URL: NSURL(string: "https://guarded-hamlet-96865.herokuapp.com/testpost")!)
         request.HTTPMethod = "POST"
+        startTime = "1462204800000"
         let postString = "duration="+String(duration)+"&count="+String(activity_count)+"&activity="+currentlySelectedActivity+"&maxdegree="+String(max_degree)+"&cues="+String(cuesPercent)+"&assist="+String(assistancePercent)+"&time="+startTime
         request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
