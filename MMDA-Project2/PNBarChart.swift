@@ -347,7 +347,6 @@ public class PNBarChart: UIView {
         }
     }
     
-    
     func viewCleanupForCollection( array:NSMutableArray )
     {
         if array.count > 0 {

@@ -115,6 +115,13 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total motions completed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eKj-Av-yvW">
+                                        <rect key="frame" x="8" y="41" width="293" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.74384696378676129" green="0.94257958042928358" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -128,6 +135,7 @@
                         <outlet property="assistLabel" destination="Pyu-zh-Gyh" id="T6R-kh-fRO"/>
                         <outlet property="averageLabel" destination="vAF-9H-Ti8" id="K3O-NE-xTy"/>
                         <outlet property="backButton" destination="Bkk-Q8-66O" id="ohv-oY-zOG"/>
+                        <outlet property="chartLabel" destination="eKj-Av-yvW" id="fsm-RL-DkC"/>
                         <outlet property="cuesLabel" destination="4kE-Iz-KyM" id="BuP-KN-TkD"/>
                         <outlet property="durationLabel" destination="MWC-JK-Tm0" id="Iod-bb-who"/>
                         <outlet property="textViewDetail" destination="zgy-6z-l0v" id="2wB-97-Wle"/>
@@ -185,6 +193,34 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Sessions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="btz-jk-3mp">
+                                        <rect key="frame" x="175" y="290" width="110" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VAd-0l-vhl">
+                                        <rect key="frame" x="68" y="267" width="84" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Days" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aEU-IT-4BB">
+                                        <rect key="frame" x="40" y="290" width="80" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="E1w-u8-tky">
+                                        <rect key="frame" x="216" y="267" width="84" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.88978133115093649" green="0.91971776501160041" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -224,11 +260,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="Days" destination="VAd-0l-vhl" id="8FK-FV-FVw"/>
+                        <outlet property="Sessions" destination="E1w-u8-tky" id="20C-n7-rKq"/>
                         <outlet property="beginSessionButton" destination="2jp-jh-N2e" id="kjh-sq-xPp"/>
                         <outlet property="byActivityButton" destination="kEo-29-dcQ" id="tlH-hE-CjN"/>
                         <outlet property="byDateButton" destination="06X-8i-RRc" id="l9V-6e-JA8"/>
                         <outlet property="dataView" destination="Amu-yW-Bhl" id="M6Z-NU-IeC"/>
+                        <outlet property="daysLabel" destination="aEU-IT-4BB" id="RuX-bt-S8v"/>
                         <outlet property="nameLabel" destination="3C6-T9-YNp" id="BeD-nX-t4D"/>
+                        <outlet property="sessionsLabel" destination="btz-jk-3mp" id="Evd-0b-AtQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -271,7 +311,7 @@
                                 <rect key="frame" x="8" y="250" width="303" height="309"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max degree change for" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yHI-I4-ngA">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data for" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yHI-I4-ngA">
                                         <rect key="frame" x="8" y="8" width="285" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -327,6 +367,13 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max degree change" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1a1-tm-HRO">
+                                        <rect key="frame" x="8" y="34" width="293" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.74384696380000004" green="0.94257958040000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -349,6 +396,7 @@
                         <outlet property="assistLabel" destination="V6Z-5p-ZJ3" id="IL2-PO-yLn"/>
                         <outlet property="averageLabel" destination="tZA-gZ-Wfx" id="gMu-8x-dHi"/>
                         <outlet property="backButton" destination="08f-l1-v76" id="0Rj-rr-KK2"/>
+                        <outlet property="chartLabel" destination="1a1-tm-HRO" id="mL1-XA-IUd"/>
                         <outlet property="cues" destination="UBI-Mk-8ZB" id="tmA-2D-Ww4"/>
                         <outlet property="cuesLabel" destination="p5p-mP-IHl" id="bY2-Xr-bmK"/>
                         <outlet property="duration" destination="lX2-vE-CWQ" id="r7D-Re-yIR"/>
@@ -841,7 +889,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="P1a-qT-vo4"/>
-        <segue reference="BFc-be-eoD"/>
+        <segue reference="fAu-gX-B4a"/>
+        <segue reference="7oa-Ac-pYu"/>
     </inferredMetricsTieBreakers>
 </document>

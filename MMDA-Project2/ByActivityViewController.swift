@@ -15,6 +15,7 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
 
     @IBOutlet weak var averageLabel: UILabel!
     @IBOutlet weak var viewBy: UILabel!
+    @IBOutlet weak var chartLabel: UILabel!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var Duration: UILabel!
     @IBOutlet weak var Assist: UILabel!
@@ -24,7 +25,7 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
     @IBOutlet weak var cuesLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var myPicker: UIPickerView!
-    var pickerData = ["Bowling", "Teeth", "Hair"]
+    var pickerData:[String] = []
     var currActivity = "Bowling"
 
     override func viewDidLoad() {
@@ -41,6 +42,8 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
         Assist.font = UIFont(name: "ArialRoundedMTBold", size: 17.0)
         Duration.font = UIFont(name: "ArialRoundedMTBold", size: 17.0)
         averageLabel.font = UIFont(name: "ArialRoundedMTBold", size: 17.0)
+        chartLabel.font = UIFont(name: "ArialRoundedMTBold", size: 15.0)
+        chartLabel.textAlignment = .Center
 
         
         myPicker.delegate = self
@@ -50,7 +53,7 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
         }
         
         currActivity = pickerData[0]
-        viewBy.text = "Max Degree Change for " + currActivity + ":"
+        viewBy.text = "Data for " + currActivity + ":"
         displayData()
 
     }
@@ -113,7 +116,7 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
         ChartLabel.textAlignment = NSTextAlignment.Center
         ChartLabel.text = "Line Chart"
         
-        let lineChart:PNLineChart = PNLineChart(frame: CGRectMake(0, 300.0, 320, 150.0))
+        let lineChart:PNLineChart = PNLineChart(frame: CGRectMake(0, 312.0, 310, 150.0))
         lineChart.yLabelFormat = "%1.1f"
         lineChart.showLabel = true
         lineChart.backgroundColor = UIColor.clearColor()
@@ -135,9 +138,7 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
                 }
             }
         }
-        print("HI TEST")
-        print(xlab)
-        print(xlab.count)
+
         var yDurations = [CGFloat](count: xlab.count, repeatedValue: CGFloat(0))
 
         for i in 0 ..< serverData.count {
@@ -160,9 +161,6 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
                 let temp2 = xlab.indexOf(dateString)
                 if (temp2 != nil && activity == currActivity) {
                     let index = temp2!
-                    print("it's happening")
-                    print(yDurations[index])
-                    print(CGFloat(duration))
                     yDurations[index] = yDurations[index] + CGFloat(duration)
                 }
             }
@@ -223,7 +221,7 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
 
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         currActivity = pickerData[row]
-        viewBy.text = "Max Degree Change for " + currActivity + ":"
+        viewBy.text = "Data for " + currActivity + ":"
         
         // display the data for the newly selected activity
         displayData()

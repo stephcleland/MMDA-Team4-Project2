@@ -16,7 +16,7 @@ import UIKit
 
 class ByDateViewController: UIViewController, EPCalendarPickerDelegate, PNChartDelegate{
     @IBOutlet weak var averageLabel: UILabel!
-
+    @IBOutlet weak var chartLabel: UILabel!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var viewCalButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
@@ -42,6 +42,8 @@ class ByDateViewController: UIViewController, EPCalendarPickerDelegate, PNChartD
         Assist.font = UIFont(name: "ArialRoundedMTBold", size: 17.0)
         Duration.font = UIFont(name: "ArialRoundedMTBold", size: 17.0)
         averageLabel.font = UIFont(name: "ArialRoundedMTBold", size: 17.0)
+        chartLabel.font = UIFont(name: "ArialRoundedMTBold", size: 15.0)
+        chartLabel.textAlignment = .Center
         
         let formatter = NSDateFormatter()
         formatter.dateFormat = "MM-dd-yyyy"
@@ -127,23 +129,63 @@ class ByDateViewController: UIViewController, EPCalendarPickerDelegate, PNChartD
         
              ChartLabel.text = "Bar Chart"
              
-             let barChart = PNBarChart(frame: CGRectMake(0, 300.0, 320, 150.0))
+             let barChart = PNBarChart(frame: CGRectMake(0, 310.0, 320, 150.0))
              barChart.backgroundColor = UIColor.clearColor()
              
              barChart.animationType = .Waterfall
-             
-             
-             barChart.labelMarginTop = 5.0
-             barChart.xLabels = ["SEP 1","SEP 2","SEP 3","SEP 4","SEP 5","SEP 6","SEP 7"]
-             barChart.yValues = [1,24,12,18,30,10,21]
-             barChart.strokeChart()
-             
-             barChart.delegate = self
-            barChart.tag = 13
-            view.viewWithTag(13)?.removeFromSuperview()
-             view.addSubview(barChart)
-             
-             title = "Bar Chart"
+        
+        
+            var date = ""
+            var xlab:[String] = []
+            for i in 0 ..< serverData.count {
+                let activity = serverData[i]["activity"] as? NSString as! String
+                let temp = serverData[i]["time"] as? NSString
+                if (temp != nil) {
+                    let time = temp!.doubleValue / 1000
+                    let timeDate = NSDate(timeIntervalSince1970: time)
+                    let formatter = NSDateFormatter()
+                    formatter.dateFormat = "MM-dd-yyyy"
+                    date = formatter.stringFromDate(timeDate)
+                    if (!xlab.contains(activity) && activity != "" && date == dateString) {
+                        xlab.append(activity)
+                    }
+                }
+            }
+        
+            var yvals = [CGFloat](count: xlab.count, repeatedValue: CGFloat(0))
+            for i in 0 ..< serverData.count {
+                let activity = serverData[i]["activity"] as? NSString as! String
+                if (activity != "") {
+                    let index = xlab.indexOf(activity)
+                    let temp = (serverData[i]["count"] as? NSString)
+                    if (temp != nil && date == dateString) {
+                        yvals[index!] += CGFloat(temp!.floatValue)
+                    }
+                }
+            }
+            
+            for i in 0 ..< xlab.count {
+                xlab[i] = xlab[i] + " (" + String(yvals[i]) + ")"
+            }
+        
+            barChart.labelMarginTop = 5.0
+        print(xlab)
+        print(yvals)
+        if (xlab.count > 0) {
+
+                barChart.xLabels = xlab
+                if (yvals.minElement() == 0 && yvals.maxElement() == 0) {
+                    yvals = [CGFloat](count: yvals.count, repeatedValue: CGFloat(1))
+                }
+                barChart.yValues = yvals
+                barChart.strokeChart()
+                 
+                barChart.delegate = self
+                barChart.tag = 17
+                view.viewWithTag(17)?.removeFromSuperview()
+                view.addSubview(barChart)
+        }
+        
         
             
     }
@@ -188,7 +230,6 @@ class ByDateViewController: UIViewController, EPCalendarPickerDelegate, PNChartD
     
     // functions required for the functionality of the calendar picker
     func epCalendarPicker(_: EPCalendarPicker, didCancel error : NSError) {
-        textViewDetail.text = "User cancelled selection"
         
     }
     func epCalendarPicker(_: EPCalendarPicker, didSelectDate date : NSDate) {

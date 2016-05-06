@@ -20,7 +20,7 @@ class MainActivityViewController: UIViewController, UIPickerViewDataSource,UIPic
     var runningActivity = false
     
     // figure out valid activities for our different motions
-    var pickerData = ["Bowling", "Teeth", "Hair"]
+    var pickerData:[String] = []
     var yawPitchRoll = [1, 0, 2, 2]
     var degreeThresholds: [Float] = [200.0, 200.0, 200.0, 200.0]
     var motions = ["Shoulder Flexion", "Shoulder Horizontal Adduction", "Elbow Supination", "Elbow Pronation"]
@@ -90,7 +90,7 @@ class MainActivityViewController: UIViewController, UIPickerViewDataSource,UIPic
     func getServerData() {
         
         // only want to pull data from a very specific time slice from start time to end time
-        let url = NSURL(string: "https://guarded-hamlet-96865.herokuapp.com/gyro")
+        let url = NSURL(string: "https://guarded-hamlet-96865.herokuapp.com/gyro"+"?start_time="+(startTime)+"&end_time="+endTime)
         let request = NSMutableURLRequest(URL: url!)
         request.HTTPMethod = "GET"
         self.didGetServerData = false

@@ -16,14 +16,23 @@ import UIKit
 var activities = [Activity]()
 var currentlySelectedActivity = ""
 var serverData: NSArray!
+var addedInitialActivities = false
 
 class ViewController: UIViewController, PNChartDelegate {
+    @IBOutlet weak var sessionsLabel: UILabel!
+    @IBOutlet weak var Sessions: UILabel!
 
     @IBOutlet weak var dataView: UIView!
+    @IBOutlet weak var daysLabel: UILabel!
+    @IBOutlet weak var Days: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var byDateButton: UIButton!
     @IBOutlet weak var byActivityButton: UIButton!
     @IBOutlet weak var beginSessionButton: UIButton!
+    var pickerData = ["Bowling", "Slapsies Defense", "Slapsies Offense", "Making Bubbles"]
+    var yawPitchRoll = [1, 0, 2, 2]
+    var degreeThresholds: [Float] = [200.0, 200.0, 200.0, 200.0]
+    var motions = ["Shoulder Flexion", "Shoulder Horizontal Adduction", "Elbow Supination", "Elbow Pronation"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +45,34 @@ class ViewController: UIViewController, PNChartDelegate {
         byDateButton.titleLabel?.font = UIFont(name: "ArialRoundedMTBold", size: 14.0)
         byActivityButton.titleLabel?.font = UIFont(name: "ArialRoundedMTBold", size: 14.0)
         beginSessionButton.titleLabel?.font = UIFont(name: "ArialRoundedMTBold", size: 22.0)
-
+        Sessions.font = UIFont(name: "ArialRoundedMTBold", size: 17.0)
+        sessionsLabel.font = UIFont(name: "ArialRoundedMTBold", size: 15.0)
+        Days.font = UIFont(name: "ArialRoundedMTBold", size: 17.0)
+        daysLabel.font = UIFont(name: "ArialRoundedMTBold", size: 15.0)
+        
+        if (!addedInitialActivities) {
+            let newActivity = Activity()
+            newActivity.changeName("Bowling")
+            newActivity.addMotion("Shoulder Flexion")
+            activities.append(newActivity)
+            
+            let newActivity2 = Activity()
+            newActivity2.changeName("Slapsies Defense")
+            newActivity2.addMotion("Elbow Supination")
+            activities.append(newActivity2)
+            
+            let newActivity3 = Activity()
+            newActivity3.changeName("Slapsies Offense")
+            newActivity3.addMotion("Elbow Pronation")
+            activities.append(newActivity3)
+            
+            let newActivity4 = Activity()
+            newActivity4.changeName("Making Bubbles")
+            newActivity4.addMotion("Shoulder Horizontal Adduction")
+            activities.append(newActivity4)
+            addedInitialActivities = true
+        }
+        
         getServerData()
         //self.drawChart()
 
@@ -60,6 +96,7 @@ class ViewController: UIViewController, PNChartDelegate {
             let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
             serverData = self.convertStringToDictionary(responseString!)
             dispatch_async(dispatch_get_main_queue()) {
+                self.displayData()
                 self.drawChart()
             }
         }
@@ -81,9 +118,48 @@ class ViewController: UIViewController, PNChartDelegate {
         
     }
  
+    func displayData() {
+        var days:[String] = []
+        for i in 0 ..< serverData.count {
+            let temp = serverData[i]["time"] as? NSString
+                if (temp != nil) {
+                    let time = temp!.doubleValue / 1000
+                    let timeDate = NSDate(timeIntervalSince1970: time)
+                    let formatter = NSDateFormatter()
+                    formatter.dateFormat = "MM-dd-yyyy"
+                    let date = formatter.stringFromDate(timeDate)
+                    if (!days.contains(date)) {
+                        days.append(date)
+                    }
+            }
+        }
+            /*let activity = serverData[i]["activity"] as? NSString as! String
+            if (activity == currActivity) {
+                count += 1
+                print((serverData[i]["cues"] as? NSString)!.floatValue)
+                var temp = (serverData[i]["cues"] as? NSString)!.floatValue
+                print ("cues:")
+                print(temp)
+                cues = cues + temp
+                temp = (serverData[i]["assist"] as? NSString)!.floatValue
+                assist = assist + (temp)
+                temp = (serverData[i]["count"] as? NSString)!.floatValue
+                numCompletions = numCompletions + (temp)
+                temp = (serverData[i]["duration"] as? NSString)!.floatValue
+                duration = duration + (temp)
+                
+                
+            }*/
+        
+
+        Sessions.text = String(serverData.count)
+        Days.text = String(days.count)
+
+        
+    }
+    
     // draws a line/bar chart with the data pulled from the server
     func drawChart() {
-        print("in here")
         let ChartLabel:UILabel = UILabel(frame: CGRectMake(0, 115, 320.0, 30))
         ChartLabel.textColor = PNGreenColor
         ChartLabel.font = UIFont(name: "Avenir-Medium", size:23.0)
@@ -98,26 +174,30 @@ class ViewController: UIViewController, PNChartDelegate {
          
          barChart.animationType = .Waterfall
          
-         
          barChart.labelMarginTop = 5.0
         
          var xlab:[String] = []
          for i in 0 ..< serverData.count {
             let activity = serverData[i]["activity"] as? NSString as! String
-            if (!xlab.contains(activity)) {
+            if (!xlab.contains(activity) && activity != "") {
                 xlab.append(activity)
             }
          }
         var yvals = [Int](count: xlab.count, repeatedValue: 0)
         for i in 0 ..< serverData.count {
             let activity = serverData[i]["activity"] as? NSString as! String
-            let index = xlab.indexOf(activity)
-            yvals[index!] += 1
+            if (activity != "") {
+                let index = xlab.indexOf(activity)
+                yvals[index!] += 1
+            }
+        }
+        
+        for i in 0 ..< xlab.count {
+            xlab[i] = xlab[i] + " (" + String(yvals[i]) + ")"
         }
          barChart.xLabels = xlab
          barChart.yValues = yvals
          barChart.strokeChart()
-         
          barChart.delegate = self
          
          view.addSubview(ChartLabel)

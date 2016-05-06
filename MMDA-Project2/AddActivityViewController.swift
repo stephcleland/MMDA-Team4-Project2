@@ -27,7 +27,7 @@ class AddActivityViewController: UIViewController, UITableViewDelegate, UITableV
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.delegate = self
         tableView.dataSource = self
-        self.tableView.allowsMultipleSelection = true
+        self.tableView.allowsMultipleSelection = false
         
         titleLabel.font = UIFont(name: "ArialRoundedMTBold", size: 20.0)
         motionsTrackLabel.font = UIFont(name: "ArialRoundedMTBold", size: 17.0)
