@@ -17,6 +17,7 @@ var duration: Int!
 var startTime: String!
 
 class MainActivityViewController: UIViewController, UIPickerViewDataSource,UIPickerViewDelegate {
+    @IBOutlet weak var logo: UIButton!
     var runningActivity = false
     
     // figure out valid activities for our different motions
@@ -49,6 +50,8 @@ class MainActivityViewController: UIViewController, UIPickerViewDataSource,UIPic
         backButton.titleLabel?.font = UIFont(name: "ArialRoundedMTBold", size: 14.0)
         titleLabel.textAlignment = .Center
         startStopView.backgroundColor = UIColor(hue: 0.25, saturation: 0.22, brightness: 0.93, alpha: 1.0)
+        logo.setBackgroundImage(UIImage(named:"logo1.png")!, forState: .Normal)
+        logo.setTitle("", forState: .Normal)
         for activity in activities {
             pickerData.append(activity.name)
         }

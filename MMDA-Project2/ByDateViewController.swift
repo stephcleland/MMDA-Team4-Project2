@@ -18,6 +18,7 @@ class ByDateViewController: UIViewController, EPCalendarPickerDelegate, PNChartD
     @IBOutlet weak var averageLabel: UILabel!
     @IBOutlet weak var chartLabel: UILabel!
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var logo: UIButton!
     @IBOutlet weak var viewCalButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var textViewDetail: UILabel!
@@ -45,6 +46,8 @@ class ByDateViewController: UIViewController, EPCalendarPickerDelegate, PNChartD
         Duration.font = UIFont(name: "ArialRoundedMTBold", size: 17.0)
         averageLabel.font = UIFont(name: "ArialRoundedMTBold", size: 17.0)
         chartLabel.font = UIFont(name: "ArialRoundedMTBold", size: 15.0)
+        logo.setBackgroundImage(UIImage(named:"logo1.png")!, forState: .Normal)
+        logo.setTitle("", forState: .Normal)
         chartLabel.textAlignment = .Center
         
         let formatter = NSDateFormatter()

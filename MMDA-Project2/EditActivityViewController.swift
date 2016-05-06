@@ -19,6 +19,7 @@ class EditActivityViewController: UIViewController {
     @IBOutlet weak var goal2: UITextView!
     @IBOutlet weak var movementsLabel: UILabel!
     @IBOutlet weak var three: UILabel!
+    @IBOutlet weak var logo: UIButton!
     @IBOutlet weak var goal3: UITextView!
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var editButton: UIButton!
@@ -48,6 +49,8 @@ class EditActivityViewController: UIViewController {
         three.font = UIFont(name: "ArialRoundedMTBold", size: 17.0)
         movementsLabel.font = UIFont(name: "ArialRoundedMTBold", size: 17.0)
         goalsLabel.font = UIFont(name: "ArialRoundedMTBold", size: 17.0)
+        logo.setBackgroundImage(UIImage(named:"logo1.png")!, forState: .Normal)
+        logo.setTitle("", forState: .Normal)
         
         movementList.editable = false
         movementList.text = ""

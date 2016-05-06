@@ -13,6 +13,7 @@ import UIKit
 
 class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPickerViewDelegate, PNChartDelegate {
 
+    @IBOutlet weak var logo: UIButton!
     @IBOutlet weak var averageLabel: UILabel!
     @IBOutlet weak var viewBy: UILabel!
     @IBOutlet weak var chartLabel: UILabel!
@@ -45,6 +46,8 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
         averageLabel.font = UIFont(name: "ArialRoundedMTBold", size: 17.0)
         chartLabel.font = UIFont(name: "ArialRoundedMTBold", size: 15.0)
         chartLabel.textAlignment = .Center
+        logo.setBackgroundImage(UIImage(named:"logo1.png")!, forState: .Normal)
+        logo.setTitle("", forState: .Normal)
 
         
         myPicker.delegate = self

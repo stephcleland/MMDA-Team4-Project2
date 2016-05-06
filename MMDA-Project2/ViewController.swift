@@ -23,6 +23,7 @@ class ViewController: UIViewController, PNChartDelegate {
     @IBOutlet weak var Sessions: UILabel!
 
     @IBOutlet weak var dataView: UIView!
+    @IBOutlet weak var logo: UIButton!
     @IBOutlet weak var daysLabel: UILabel!
     @IBOutlet weak var Days: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
@@ -49,6 +50,8 @@ class ViewController: UIViewController, PNChartDelegate {
         sessionsLabel.font = UIFont(name: "ArialRoundedMTBold", size: 15.0)
         Days.font = UIFont(name: "ArialRoundedMTBold", size: 17.0)
         daysLabel.font = UIFont(name: "ArialRoundedMTBold", size: 15.0)
+        logo.setBackgroundImage(UIImage(named:"logo1.png")!, forState: .Normal)
+        logo.setTitle("", forState: .Normal)
         
         // adding the pre-programmed activities to monitor
         if (!addedInitialActivities) {

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		157721E61CDD403C009C9D67 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 157721E51CDD403C009C9D67 /* logo.png */; };
+		157721E81CDD4164009C9D67 /* logo1.png in Resources */ = {isa = PBXBuildFile; fileRef = 157721E71CDD4164009C9D67 /* logo1.png */; };
 		15BFA7241CB1A49600FAB4D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BFA7231CB1A49600FAB4D1 /* AppDelegate.swift */; };
 		15BFA7261CB1A49600FAB4D1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BFA7251CB1A49600FAB4D1 /* ViewController.swift */; };
 		15BFA7291CB1A49600FAB4D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15BFA7271CB1A49600FAB4D1 /* Main.storyboard */; };
@@ -57,6 +59,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		157721E51CDD403C009C9D67 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = SOURCE_ROOT; };
+		157721E71CDD4164009C9D67 /* logo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo1.png; sourceTree = SOURCE_ROOT; };
 		15BFA7201CB1A49600FAB4D1 /* MMDA-Project2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MMDA-Project2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		15BFA7231CB1A49600FAB4D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15BFA7251CB1A49600FAB4D1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -156,6 +160,8 @@
 				15BFA7581CB1A8E400FAB4D1 /* ByDateViewController.swift */,
 				15BFA7561CB1A8C200FAB4D1 /* ByActivityViewController.swift */,
 				15BFA7541CB1A85800FAB4D1 /* MainActivityViewController.swift */,
+				157721E71CDD4164009C9D67 /* logo1.png */,
+				157721E51CDD403C009C9D67 /* logo.png */,
 				15BFA72D1CB1A49600FAB4D1 /* Assets.xcassets */,
 				15BFA72F1CB1A49600FAB4D1 /* LaunchScreen.storyboard */,
 				15BFA7321CB1A49600FAB4D1 /* Info.plist */,
@@ -319,9 +325,11 @@
 			files = (
 				15BFA76B1CB5CC4200FAB4D1 /* EPCalendarCell1.xib in Resources */,
 				15BFA7311CB1A49600FAB4D1 /* LaunchScreen.storyboard in Resources */,
+				157721E61CDD403C009C9D67 /* logo.png in Resources */,
 				15BFA72E1CB1A49600FAB4D1 /* Assets.xcassets in Resources */,
 				15BFA7291CB1A49600FAB4D1 /* Main.storyboard in Resources */,
 				15BFA76D1CB5CC4200FAB4D1 /* EPCalendarHeaderView.xib in Resources */,
+				157721E81CDD4164009C9D67 /* logo1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

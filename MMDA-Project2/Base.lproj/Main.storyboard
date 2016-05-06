@@ -34,6 +34,11 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MEf-Y2-Frn">
+                                        <rect key="frame" x="256" y="11" width="42" height="42"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.4338030162" green="0.37582731990000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -138,6 +143,7 @@
                         <outlet property="chartLabel" destination="eKj-Av-yvW" id="fsm-RL-DkC"/>
                         <outlet property="cuesLabel" destination="4kE-Iz-KyM" id="BuP-KN-TkD"/>
                         <outlet property="durationLabel" destination="MWC-JK-Tm0" id="Iod-bb-who"/>
+                        <outlet property="logo" destination="MEf-Y2-Frn" id="RaJ-AN-Pk0"/>
                         <outlet property="textViewDetail" destination="zgy-6z-l0v" id="2wB-97-Wle"/>
                         <outlet property="titleLabel" destination="RAq-AV-mpK" id="5FL-OQ-n2x"/>
                         <outlet property="viewCalButton" destination="m1M-3S-aUT" id="08B-MW-Zk1"/>
@@ -253,6 +259,11 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0QW-lf-njT">
+                                        <rect key="frame" x="252" y="17" width="46" height="46"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.4338030162" green="0.37582731990000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -267,6 +278,7 @@
                         <outlet property="byDateButton" destination="06X-8i-RRc" id="l9V-6e-JA8"/>
                         <outlet property="dataView" destination="Amu-yW-Bhl" id="M6Z-NU-IeC"/>
                         <outlet property="daysLabel" destination="aEU-IT-4BB" id="RuX-bt-S8v"/>
+                        <outlet property="logo" destination="0QW-lf-njT" id="Uhd-te-b3I"/>
                         <outlet property="nameLabel" destination="3C6-T9-YNp" id="BeD-nX-t4D"/>
                         <outlet property="sessionsLabel" destination="btz-jk-3mp" id="Evd-0b-AtQ"/>
                     </connections>
@@ -304,6 +316,11 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Yu9-f6-5Eo">
+                                        <rect key="frame" x="253" y="10" width="42" height="42"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.4338030162" green="0.37582731990000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -401,6 +418,7 @@
                         <outlet property="cuesLabel" destination="p5p-mP-IHl" id="bY2-Xr-bmK"/>
                         <outlet property="duration" destination="lX2-vE-CWQ" id="r7D-Re-yIR"/>
                         <outlet property="durationLabel" destination="AzZ-7s-Xtm" id="B32-Ly-BTM"/>
+                        <outlet property="logo" destination="Yu9-f6-5Eo" id="hZe-he-Blf"/>
                         <outlet property="myPicker" destination="Agb-Pn-e4H" id="1JJ-ir-RvE"/>
                         <outlet property="titleLabel" destination="ojt-30-Cfv" id="abQ-qP-KKg"/>
                         <outlet property="viewBy" destination="yHI-I4-ngA" id="eDT-Pc-PI6"/>
@@ -429,6 +447,11 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Lxf-wT-zVx">
+                                        <rect key="frame" x="255" y="7" width="42" height="42"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.4338030162" green="0.37582731990000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -493,6 +516,7 @@
                         <outlet property="doneButton" destination="d9t-ro-1Nr" id="gfD-fZ-DRX"/>
                         <outlet property="enterNameField" destination="myV-Lg-Ug7" id="o0t-ov-HFT"/>
                         <outlet property="enterNameLabel" destination="L6k-xz-wwT" id="yiV-K0-DMK"/>
+                        <outlet property="logo" destination="Lxf-wT-zVx" id="MIb-9w-Fi5"/>
                         <outlet property="motionsTrackLabel" destination="nJc-5a-rdQ" id="Sb6-Fv-DrK"/>
                         <outlet property="tableView" destination="zXa-rc-VRe" id="kwU-W4-hPC"/>
                         <outlet property="titleLabel" destination="IBu-Vh-ngI" id="rY9-Lo-mTE"/>
@@ -531,6 +555,11 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ROG-N0-Lwf">
+                                        <rect key="frame" x="250" y="14" width="46" height="46"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.4338030162" green="0.37582731990000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -606,6 +635,7 @@
                         <outlet property="addButton" destination="g2Y-p8-QaE" id="byQ-Yr-uZa"/>
                         <outlet property="backButton" destination="MfG-yA-GfO" id="Vbg-aa-loO"/>
                         <outlet property="editButton" destination="uJk-8m-08b" id="OjR-gc-lhg"/>
+                        <outlet property="logo" destination="ROG-N0-Lwf" id="kiZ-qY-xCz"/>
                         <outlet property="myPicker" destination="DOt-e5-V2a" id="lQr-aV-JXP"/>
                         <outlet property="startStopButton" destination="mQ8-2C-BCs" id="Zx8-9x-ESH"/>
                         <outlet property="startStopView" destination="bEt-Rj-8yD" id="3zb-u6-rnd"/>
@@ -644,6 +674,11 @@
                                         <connections>
                                             <action selector="editPressed:" destination="2U0-V0-PLr" eventType="touchUpInside" id="jOp-Ri-tap"/>
                                         </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8Ce-tD-05f">
+                                        <rect key="frame" x="8" y="11" width="42" height="42"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.4338030162" green="0.37582731990000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -751,6 +786,7 @@
                         <outlet property="goal2" destination="4oL-Mw-M7s" id="2nZ-fG-JtL"/>
                         <outlet property="goal3" destination="xSQ-NK-Ba9" id="TuH-Zx-ABn"/>
                         <outlet property="goalsLabel" destination="YBN-rJ-flt" id="etH-Km-axv"/>
+                        <outlet property="logo" destination="8Ce-tD-05f" id="ZOn-L8-MOd"/>
                         <outlet property="movementList" destination="F1D-Jb-Mfa" id="ZEf-0O-Yj6"/>
                         <outlet property="movementsLabel" destination="STN-6g-D8a" id="iI1-35-xq7"/>
                         <outlet property="one" destination="gzV-WY-AyC" id="H91-EU-we4"/>
@@ -781,6 +817,11 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5hv-Cq-Sbf">
+                                        <rect key="frame" x="251" y="11" width="42" height="42"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.4338030162" green="0.37582731990000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -880,6 +921,7 @@
                         <outlet property="cuesQ" destination="llf-WE-2gl" id="NRX-B6-6lK"/>
                         <outlet property="cuesSlider" destination="xuf-Cu-5lW" id="mWh-pk-rca"/>
                         <outlet property="doneButton" destination="XDV-eT-J0c" id="0Ld-SG-6MW"/>
+                        <outlet property="logo" destination="5hv-Cq-Sbf" id="Lea-2p-wM0"/>
                         <outlet property="titleLabel" destination="O07-xF-nuh" id="P8H-ua-rUn"/>
                     </connections>
                 </viewController>
@@ -889,7 +931,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="fAu-gX-B4a"/>
-        <segue reference="7oa-Ac-pYu"/>
+        <segue reference="BFc-be-eoD"/>
+        <segue reference="P1a-qT-vo4"/>
     </inferredMetricsTieBreakers>
 </document>

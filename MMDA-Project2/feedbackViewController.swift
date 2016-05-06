@@ -13,6 +13,7 @@ var assistancePercent: Float!
 var cuesPercent: Float!
 
 class feedbackViewController: UIViewController, UITextViewDelegate {
+    @IBOutlet weak var logo: UIButton!
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var cuesSlider: UISlider!
@@ -50,6 +51,8 @@ class feedbackViewController: UIViewController, UITextViewDelegate {
         self.commentsField.delegate = self
         assistancePercent = 0.5
         cuesPercent = 0.5
+        logo.setBackgroundImage(UIImage(named:"logo1.png")!, forState: .Normal)
+        logo.setTitle("", forState: .Normal)
         
         
     }

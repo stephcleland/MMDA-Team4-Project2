@@ -15,6 +15,7 @@ class AddActivityViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var motionsTrackLabel: UILabel!
     var activityName: String!
+    @IBOutlet weak var logo: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var enterNameLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
@@ -35,6 +36,8 @@ class AddActivityViewController: UIViewController, UITableViewDelegate, UITableV
         enterNameField.font = UIFont(name: "ArialRoundedMTBold", size: 16.0)
         enterNameLabel.font = UIFont(name: "ArialRoundedMTBold", size: 17.0)
         doneButton.titleLabel?.font = UIFont(name: "ArialRoundedMTBold", size: 16.0)
+        logo.setBackgroundImage(UIImage(named:"logo1.png")!, forState: .Normal)
+        logo.setTitle("", forState: .Normal)
 
     }
 
