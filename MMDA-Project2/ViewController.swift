@@ -50,6 +50,7 @@ class ViewController: UIViewController, PNChartDelegate {
         Days.font = UIFont(name: "ArialRoundedMTBold", size: 17.0)
         daysLabel.font = UIFont(name: "ArialRoundedMTBold", size: 15.0)
         
+        // adding the pre-programmed activities to monitor
         if (!addedInitialActivities) {
             let newActivity = Activity()
             newActivity.changeName("Bowling")
@@ -74,7 +75,6 @@ class ViewController: UIViewController, PNChartDelegate {
         }
         
         getServerData()
-        //self.drawChart()
 
     }
     
@@ -118,6 +118,7 @@ class ViewController: UIViewController, PNChartDelegate {
         
     }
  
+    // get the qualitative data to display on the home screen
     func displayData() {
         var days:[String] = []
         for i in 0 ..< serverData.count {
@@ -133,24 +134,6 @@ class ViewController: UIViewController, PNChartDelegate {
                     }
             }
         }
-            /*let activity = serverData[i]["activity"] as? NSString as! String
-            if (activity == currActivity) {
-                count += 1
-                print((serverData[i]["cues"] as? NSString)!.floatValue)
-                var temp = (serverData[i]["cues"] as? NSString)!.floatValue
-                print ("cues:")
-                print(temp)
-                cues = cues + temp
-                temp = (serverData[i]["assist"] as? NSString)!.floatValue
-                assist = assist + (temp)
-                temp = (serverData[i]["count"] as? NSString)!.floatValue
-                numCompletions = numCompletions + (temp)
-                temp = (serverData[i]["duration"] as? NSString)!.floatValue
-                duration = duration + (temp)
-                
-                
-            }*/
-        
 
         Sessions.text = String(serverData.count)
         Days.text = String(days.count)
@@ -158,14 +141,12 @@ class ViewController: UIViewController, PNChartDelegate {
         
     }
     
-    // draws a line/bar chart with the data pulled from the server
+    // draws a bar chart with the number of times each activity was completed
     func drawChart() {
         let ChartLabel:UILabel = UILabel(frame: CGRectMake(0, 115, 320.0, 30))
         ChartLabel.textColor = PNGreenColor
         ChartLabel.font = UIFont(name: "Avenir-Medium", size:23.0)
         ChartLabel.textAlignment = NSTextAlignment.Center
-        
-        // Bar Chart
         
          ChartLabel.text = "Activity Completions"
          
@@ -215,19 +196,17 @@ class ViewController: UIViewController, PNChartDelegate {
     // function if the user clicks on a point on the line graph
     func userClickedOnLineKeyPoint(point: CGPoint, lineIndex: Int, keyPointIndex: Int)
     {
-        print("Click Key on line \(point.x), \(point.y) line index is \(lineIndex) and point index is \(keyPointIndex)")
+
     }
     
     // function if the user clicks on a line segment on the line graph
     func userClickedOnLinePoint(point: CGPoint, lineIndex: Int)
     {
-        print("Click Key on line \(point.x), \(point.y) line index is \(lineIndex)")
     }
     
     // function if the user clicks on a bar in the bar graph
     func userClickedOnBarChartIndex(barIndex: Int)
     {
-        print("Click  on bar \(barIndex)")
     }
 
 }

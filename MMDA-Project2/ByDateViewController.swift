@@ -3,7 +3,7 @@
 //  MMDA-Project2
 //
 //  Written by Stephanie Cleland & Nate Winters on 4/3/16.
-//  Modified on: 5/4/16
+//  Modified on: 5/6/16
 //  Copyright © 2016 Stephanie Cleland & Nate Winters. All rights reserved.
 //
 // Line chart and bar graph from: https://github.com/kevinzhow/PNChart-Swift
@@ -31,6 +31,8 @@ class ByDateViewController: UIViewController, EPCalendarPickerDelegate, PNChartD
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // setting up UI
         backButton.titleLabel?.font = UIFont(name: "ArialRoundedMTBold", size: 15.0)
         viewCalButton.titleLabel?.font = UIFont(name: "ArialRoundedMTBold", size: 21.0)
         titleLabel.font = UIFont(name: "ArialRoundedMTBold", size: 19.0)
@@ -68,6 +70,7 @@ class ByDateViewController: UIViewController, EPCalendarPickerDelegate, PNChartD
         super.didReceiveMemoryWarning()
     }
     
+    // display the data for the specific date selected
     func displayData() {
         
         var count:Float = 0.0
@@ -85,9 +88,7 @@ class ByDateViewController: UIViewController, EPCalendarPickerDelegate, PNChartD
                 formatter.dateFormat = "MM-dd-yyyy"
                 let date = formatter.stringFromDate(timeDate)
                 if (date == dateString) {
-                    print("HERE")
                     count += 1
-                    print((serverData[i]["cues"] as? NSString)!.floatValue)
                     var temp = (serverData[i]["cues"] as? NSString)!.floatValue
                     cues = cues + temp
                     temp = (serverData[i]["assist"] as? NSString)!.floatValue
@@ -169,8 +170,7 @@ class ByDateViewController: UIViewController, EPCalendarPickerDelegate, PNChartD
             }
         
             barChart.labelMarginTop = 5.0
-        print(xlab)
-        print(yvals)
+
         if (xlab.count > 0) {
 
                 barChart.xLabels = xlab
@@ -248,17 +248,15 @@ class ByDateViewController: UIViewController, EPCalendarPickerDelegate, PNChartD
     // functions that determine what to do if a bar or a point in the graph/chart is selected
     func userClickedOnLineKeyPoint(point: CGPoint, lineIndex: Int, keyPointIndex: Int)
     {
-        print("Click Key on line \(point.x), \(point.y) line index is \(lineIndex) and point index is \(keyPointIndex)")
+
     }
     
     func userClickedOnLinePoint(point: CGPoint, lineIndex: Int)
     {
-        print("Click Key on line \(point.x), \(point.y) line index is \(lineIndex)")
     }
     
     func userClickedOnBarChartIndex(barIndex: Int)
     {
-        print("Click  on bar \(barIndex)")
     }
     
 

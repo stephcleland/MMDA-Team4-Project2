@@ -63,8 +63,7 @@ class feedbackViewController: UIViewController, UITextViewDelegate {
     // post the quantitative and qualitative data to the server, to be used later for graphs and data display
     func postToServer() {
         
-        // need to post: activity name, date of activity, activity count, max degree, activity duration,
-        //               amount of cues needed, amount of assistance needed
+        // need to post: activity name, date of activity, activity count, max degree, activity duration, amount of cues needed, amount of assistance needed
         
         let request = NSMutableURLRequest(URL: NSURL(string: "https://guarded-hamlet-96865.herokuapp.com/testpost")!)
         request.HTTPMethod = "POST"
@@ -82,8 +81,7 @@ class feedbackViewController: UIViewController, UITextViewDelegate {
                 print("response = \(response)")
             }
             
-            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-            print("responseString = \(responseString)")
+            _ = NSString(data: data!, encoding: NSUTF8StringEncoding)
         }
         task.resume()
         

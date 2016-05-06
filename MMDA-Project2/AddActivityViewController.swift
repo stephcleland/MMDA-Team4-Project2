@@ -4,7 +4,7 @@
 //
 //
 //  Written by Stephanie Cleland & Nate Winters on 4/3/16.
-//  Modified on: 5/2/16
+//  Modified on: 5/6/16
 //  Copyright © 2016 Stephanie Cleland & Nate Winters. All rights reserved.
 
 
@@ -29,6 +29,7 @@ class AddActivityViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.dataSource = self
         self.tableView.allowsMultipleSelection = false
         
+        // setting up the UI
         titleLabel.font = UIFont(name: "ArialRoundedMTBold", size: 20.0)
         motionsTrackLabel.font = UIFont(name: "ArialRoundedMTBold", size: 17.0)
         enterNameField.font = UIFont(name: "ArialRoundedMTBold", size: 16.0)

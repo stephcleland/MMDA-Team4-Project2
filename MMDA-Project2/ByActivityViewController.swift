@@ -4,7 +4,7 @@
 //
 //
 //  Written by Stephanie Cleland & Nate Winters on 4/3/16.
-//  Modified on: 5/4/16
+//  Modified on: 5/6/16
 //  Copyright © 2016 Stephanie Cleland & Nate Winters. All rights reserved.
 //
 // Line chart and bar graph from: https://github.com/kevinzhow/PNChart-Swift
@@ -32,6 +32,7 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
         
         super.viewDidLoad()
         
+        // setting up UI
         backButton.titleLabel?.font = UIFont(name: "ArialRoundedMTBold", size: 15.0)
         viewBy.font = UIFont(name: "ArialRoundedMTBold", size: 17.0)
         titleLabel.font = UIFont(name: "ArialRoundedMTBold", size: 19.0)
@@ -74,10 +75,7 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
             let activity = serverData[i]["activity"] as? NSString as! String
             if (activity == currActivity) {
                 count += 1
-                print((serverData[i]["cues"] as? NSString)!.floatValue)
                 var temp = (serverData[i]["cues"] as? NSString)!.floatValue
-                print ("cues:")
-                print(temp)
                 cues = cues + temp
                 temp = (serverData[i]["assist"] as? NSString)!.floatValue
                 assist = assist + (temp)
@@ -165,24 +163,10 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
                 }
             }
         }
-        
-        /*
-        print(xlab)
-        print(yDurations)
-        let max = yDurations.maxElement()
-        print(max)
-        for i in 0 ..< yDurations.count {
-            print("change")
-            print(yDurations[i])
-            yDurations[i] = yDurations[i] / max!
-            print(yDurations[i])
-        }
-        */
-        
+
         lineChart.xLabels = xlab
         lineChart.showCoordinateAxis = true
         lineChart.delegate = self
-        print(yDurations)
         var data01Array: [CGFloat] = yDurations
         let data01:PNLineChartData = PNLineChartData()
         data01.color = PNGreenColor
@@ -260,17 +244,15 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
     // functions that determine what to do if a bar or a point in the graph/chart is selected
     func userClickedOnLineKeyPoint(point: CGPoint, lineIndex: Int, keyPointIndex: Int)
     {
-        print("Click Key on line \(point.x), \(point.y) line index is \(lineIndex) and point index is \(keyPointIndex)")
+
     }
     
     func userClickedOnLinePoint(point: CGPoint, lineIndex: Int)
     {
-        print("Click Key on line \(point.x), \(point.y) line index is \(lineIndex)")
     }
     
     func userClickedOnBarChartIndex(barIndex: Int)
     {
-        print("Click  on bar \(barIndex)")
     }
 
 

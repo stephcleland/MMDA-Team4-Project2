@@ -35,7 +35,7 @@ class EditActivityViewController: UIViewController {
         goal2.text = "Enter a goal here!"
         goal3.text = "Enter a goal here!"
 
-        
+        // setting up the UI
         activityLabel.font = UIFont(name: "ArialRoundedMTBold", size: 20.0)
         doneButton.titleLabel?.font = UIFont(name: "ArialRoundedMTBold", size: 16.0)
         editButton.titleLabel?.font = UIFont(name: "ArialRoundedMTBold", size: 15.0)
@@ -48,8 +48,6 @@ class EditActivityViewController: UIViewController {
         three.font = UIFont(name: "ArialRoundedMTBold", size: 17.0)
         movementsLabel.font = UIFont(name: "ArialRoundedMTBold", size: 17.0)
         goalsLabel.font = UIFont(name: "ArialRoundedMTBold", size: 17.0)
-        
-        
         
         movementList.editable = false
         movementList.text = ""
