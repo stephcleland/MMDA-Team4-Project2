@@ -117,7 +117,7 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
         ChartLabel.textAlignment = NSTextAlignment.Center
         ChartLabel.text = "Line Chart"
         
-        let lineChart:PNLineChart = PNLineChart(frame: CGRectMake(0, 312.0, 310, 150.0))
+        let lineChart:PNLineChart = PNLineChart(frame: CGRectMake(10, 312.0, 310, 150.0))
         lineChart.yLabelFormat = "%1.1f"
         lineChart.showLabel = true
         lineChart.backgroundColor = UIColor.clearColor()

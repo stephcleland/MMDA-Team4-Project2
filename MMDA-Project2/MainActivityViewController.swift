@@ -93,7 +93,7 @@ class MainActivityViewController: UIViewController, UIPickerViewDataSource,UIPic
 
             
             // Get data from the server
-            //getServerData()
+            getServerData()
         }
     }
     
