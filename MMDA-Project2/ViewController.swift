@@ -113,7 +113,7 @@ class ViewController: UIViewController, PNChartDelegate {
         let data = text.dataUsingEncoding(NSUTF8StringEncoding)
         do {
             let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers)
-            return json as! NSArray
+            return (json as! NSArray)
         } catch {
             print("Something went wrong")
         }

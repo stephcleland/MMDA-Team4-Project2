@@ -143,8 +143,9 @@ class MainActivityViewController: UIViewController, UIPickerViewDataSource,UIPic
         // need to post: activity name, date of activity, activity count, max degree, activity duration, amount of cues needed, amount of assistance needed
         
         let request = NSMutableURLRequest(URL: NSURL(string: "https://guarded-hamlet-96865.herokuapp.com/activitystatepost")!)
+        let post = activityState + "=" + ""
         request.HTTPMethod = "POST"
-        request.HTTPBody = activityState.dataUsingEncoding(NSUTF8StringEncoding)
+        request.HTTPBody = post.dataUsingEncoding(NSUTF8StringEncoding)
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
             guard error == nil && data != nil else {
                 print("error=\(error)")
@@ -264,7 +265,7 @@ class MainActivityViewController: UIViewController, UIPickerViewDataSource,UIPic
         let data = text.dataUsingEncoding(NSUTF8StringEncoding)
         do {
             let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers)
-                return json as! NSArray
+                return (json as! NSArray)
          } catch {
                 print("Something went wrong")
          }
