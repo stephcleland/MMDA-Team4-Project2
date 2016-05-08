@@ -77,7 +77,7 @@ class ViewController: UIViewController, PNChartDelegate {
             addedInitialActivities = true
         }
         
-        getServerData()
+       getServerData()
 
     }
     
@@ -163,15 +163,23 @@ class ViewController: UIViewController, PNChartDelegate {
          var xlab:[String] = []
          for i in 0 ..< serverData.count {
             let activity = serverData[i]["activity"] as? NSString as! String
-            if (!xlab.contains(activity) && activity != "") {
-                xlab.append(activity)
+            var act = activity as NSString
+            if (act.length > 4) {
+                act = act.substringToIndex(4) + "..."
+            }
+            if (!xlab.contains(act as String) && act != "") {
+                xlab.append(act as String)
             }
          }
         var yvals = [Int](count: xlab.count, repeatedValue: 0)
         for i in 0 ..< serverData.count {
             let activity = serverData[i]["activity"] as? NSString as! String
             if (activity != "") {
-                let index = xlab.indexOf(activity)
+                var act = activity as NSString
+                if (act.length > 4) {
+                    act = act.substringToIndex(4) + "..."
+                }
+                let index = xlab.indexOf(act as String)
                 yvals[index!] += 1
             }
         }

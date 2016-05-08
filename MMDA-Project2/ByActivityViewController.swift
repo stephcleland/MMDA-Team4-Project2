@@ -156,13 +156,13 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
                 formatter.dateFormat = "MM-dd-yyyy"
                 dateString = formatter.stringFromDate(timeDate)
             }
-            temp = serverData[i]["duration"] as? NSString
+            temp = serverData[i]["maxdegree"] as? NSString
             if (temp != nil && dateString != "") {
-                let duration = temp!.intValue
+                let maxdegree = temp!.intValue
                 let temp2 = xlab.indexOf(dateString)
                 if (temp2 != nil && activity == currActivity) {
                     let index = temp2!
-                    yDurations[index] = yDurations[index] + CGFloat(duration)
+                    yDurations[index] = yDurations[index] + CGFloat(maxdegree)
                 }
             }
         }
@@ -180,7 +180,7 @@ class ByActivityViewController: UIViewController, UIPickerViewDataSource,UIPicke
             let item = PNLineChartDataItem(y: yValue)
             return item
         })
-        lineChart.chartData = [data01]//, data02, data03]
+        lineChart.chartData = [data01]
         lineChart.strokeChart()
         lineChart.tag = 13
         view.viewWithTag(13)?.removeFromSuperview()

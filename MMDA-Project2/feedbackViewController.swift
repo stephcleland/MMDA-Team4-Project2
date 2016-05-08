@@ -41,7 +41,7 @@ class feedbackViewController: UIViewController, UITextViewDelegate {
         cuesDescriber.font = UIFont(name: "ArialRoundedMTBold", size: 15.0)
         assistanceQ.font = UIFont(name: "ArialRoundedMTBold", size: 15.0)
         assistanceDescriber.font = UIFont(name: "ArialRoundedMTBold", size: 15.0)
-        titleLabel.text = "Feedback for " + currentlySelectedActivity
+        titleLabel.text = "Feedback"
         titleLabel.textAlignment = .Center
         cuesSlider.continuous = false
         assistanceSlider.continuous = false
@@ -70,7 +70,7 @@ class feedbackViewController: UIViewController, UITextViewDelegate {
         
         let request = NSMutableURLRequest(URL: NSURL(string: "https://guarded-hamlet-96865.herokuapp.com/testpost")!)
         request.HTTPMethod = "POST"
-        startTime = "1462204800000"
+        
         let postString = "duration="+String(duration)+"&count="+String(activity_count)+"&activity="+currentlySelectedActivity+"&maxdegree="+String(max_degree)+"&cues="+String(cuesPercent)+"&assist="+String(assistancePercent)+"&time="+startTime
         request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in

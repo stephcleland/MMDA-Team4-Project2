@@ -150,8 +150,12 @@ class ByDateViewController: UIViewController, EPCalendarPickerDelegate, PNChartD
                     let formatter = NSDateFormatter()
                     formatter.dateFormat = "MM-dd-yyyy"
                     date = formatter.stringFromDate(timeDate)
-                    if (!xlab.contains(activity) && activity != "" && date == dateString) {
-                        xlab.append(activity)
+                    var act = activity as NSString
+                    if (act.length > 4) {
+                        act = act.substringToIndex(4) + "..."
+                    }
+                    if (!xlab.contains(act as String) && act != "" && date == dateString) {
+                        xlab.append(act as String)
                     }
                 }
             }
@@ -159,11 +163,23 @@ class ByDateViewController: UIViewController, EPCalendarPickerDelegate, PNChartD
             var yvals = [CGFloat](count: xlab.count, repeatedValue: CGFloat(0))
             for i in 0 ..< serverData.count {
                 let activity = serverData[i]["activity"] as? NSString as! String
-                if (activity != "") {
-                    let index = xlab.indexOf(activity)
-                    let temp = (serverData[i]["count"] as? NSString)
-                    if (temp != nil && date == dateString) {
-                        yvals[index!] += CGFloat(temp!.floatValue)
+                let temp = serverData[i]["time"] as? NSString
+                if (temp != nil) {
+                    let time = temp!.doubleValue / 1000
+                    let timeDate = NSDate(timeIntervalSince1970: time)
+                    let formatter = NSDateFormatter()
+                    formatter.dateFormat = "MM-dd-yyyy"
+                    date = formatter.stringFromDate(timeDate)
+                    if (activity != "") {
+                        var act = activity as NSString
+                        if (act.length > 4) {
+                            act = act.substringToIndex(4) + "..."
+                        }
+                        let index = xlab.indexOf(act as String)
+                        let temp = (serverData[i]["count"] as? NSString)
+                        if (index != nil && temp != nil && date == dateString) {
+                            yvals[index!] += CGFloat(temp!.floatValue)
+                        }
                     }
                 }
             }
@@ -263,4 +279,7 @@ class ByDateViewController: UIViewController, EPCalendarPickerDelegate, PNChartD
     }
     
 
+    
+
 }
+

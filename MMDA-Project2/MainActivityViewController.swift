@@ -23,7 +23,7 @@ class MainActivityViewController: UIViewController, UIPickerViewDataSource,UIPic
     // figure out valid activities for our different motions
     var pickerData:[String] = []
     var yawPitchRoll = [1, 0, 2, 2]
-    var degreeThresholds: [Float] = [200.0, 200.0, 200.0, 200.0]
+    var degreeThresholds: [Float] = [45.0, 45.0, 90.0, 90.0]
     var motions = ["Shoulder Flexion", "Shoulder Horizontal Adduction", "Elbow Supination", "Elbow Pronation"]
     
     @IBOutlet weak var startStopButton: UIButton!
@@ -71,8 +71,13 @@ class MainActivityViewController: UIViewController, UIPickerViewDataSource,UIPic
             startStopView.backgroundColor = UIColor(hue: 0.025, saturation: 0.22, brightness: 0.92, alpha: 1.0)
             startStopButton.setTitle("Stop Activity", forState: .Normal)
             
+            // to tell the arduino to change light color to yellow
+            postToServer("1")
+            
             // record time stamp
             startTime = getDateTime()
+            
+            
         } else {
             // stopping activity monitoring
             let feedbackVC = (self.storyboard?.instantiateViewControllerWithIdentifier("feedbackViewController") )! as UIViewController
@@ -83,8 +88,12 @@ class MainActivityViewController: UIViewController, UIPickerViewDataSource,UIPic
             // record time stamp
             endTime = getDateTime()
             
+            // to tell the arduino to change light color to green then red
+            postToServer("0")
+
+            
             // Get data from the server
-            getServerData()
+            //getServerData()
         }
     }
     
@@ -126,6 +135,31 @@ class MainActivityViewController: UIViewController, UIPickerViewDataSource,UIPic
         }
         
         task.resume();
+    }
+    
+    // post a 0 or 1 to the server to indicate how the lights should change
+    func postToServer(activityState:String) {
+        
+        // need to post: activity name, date of activity, activity count, max degree, activity duration, amount of cues needed, amount of assistance needed
+        
+        let request = NSMutableURLRequest(URL: NSURL(string: "https://guarded-hamlet-96865.herokuapp.com/activitystatepost")!)
+        request.HTTPMethod = "POST"
+        request.HTTPBody = activityState.dataUsingEncoding(NSUTF8StringEncoding)
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
+            guard error == nil && data != nil else {
+                print("error=\(error)")
+                return
+            }
+            
+            if let httpStatus = response as? NSHTTPURLResponse where httpStatus.statusCode != 200 {
+                print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                print("response = \(response)")
+            }
+            
+            _ = NSString(data: data!, encoding: NSUTF8StringEncoding)
+        }
+        task.resume()
+        
     }
     
     // motion detection - calculate the number of times the activity was completed and the maximum degree
