@@ -143,7 +143,7 @@ class MainActivityViewController: UIViewController, UIPickerViewDataSource,UIPic
         // need to post: activity name, date of activity, activity count, max degree, activity duration, amount of cues needed, amount of assistance needed
         
         let request = NSMutableURLRequest(URL: NSURL(string: "https://guarded-hamlet-96865.herokuapp.com/activitystatepost")!)
-        let post = activityState + "=" + ""
+        let post = activityState
         request.HTTPMethod = "POST"
         request.HTTPBody = post.dataUsingEncoding(NSUTF8StringEncoding)
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
