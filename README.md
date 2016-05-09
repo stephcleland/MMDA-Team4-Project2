@@ -42,8 +42,9 @@ Moving forward, the OverTime OT team wants to expand the app to include the foll
 * More portable design of the hardware to allow for increased motion design
 
 ### Known Bugs
-Currently no known bugs are present in the application. Further testing is required to guarantee
-the absence of bugs.
+The only current known bug is the application does not monitor activities correctly if there is no gyroscope 
+data on the server, but this should never be the case if the arm band is properly connected to and pushing to 
+the server. Further testing is required to guarantee the absence of bugs.
 
 ### Open Source License
 MIT License
