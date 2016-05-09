@@ -139,9 +139,7 @@ class MainActivityViewController: UIViewController, UIPickerViewDataSource,UIPic
     
     // post a 0 or 1 to the server to indicate how the lights should change
     func postToServer(activityState:String) {
-        
-        // need to post: activity name, date of activity, activity count, max degree, activity duration, amount of cues needed, amount of assistance needed
-        
+                
         let request = NSMutableURLRequest(URL: NSURL(string: "https://guarded-hamlet-96865.herokuapp.com/activitystatepost")!)
         let post = activityState
         request.HTTPMethod = "POST"
