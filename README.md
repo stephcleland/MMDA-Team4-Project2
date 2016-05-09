@@ -1,4 +1,4 @@
-MMDA Team 4 Project 2: OT Overtime
+MMDA Team 4 Project 2: OverTime OT
 ====
 ###### Stephanie Cleland, Nate Winters, Alex Goldschmidt, Amanda Savage, Steven Santos, Ian Fletcher
 
@@ -13,12 +13,37 @@ Patients only interact with their OTs for ~3 hours a day, but they live their li
 * Caregivers want to be able to have set measurable, personalized goals, a “just right” challenge, for their patients to reach, starting at a measured baseline level
 * Caregivers want the patient’s health data to be secure
 
-### Major Functionality
+### Major Functionality for OverTime OT
 * OT creates individualized activity based on a set of movements
 * Physical device (Arduino with gyro / accelerometer) will be mounted on flexible band that can be worn on any place on any limb 
-* Physical device and user input measure patient progress towards motions 
+* Physical device and user input measure patient progress towards activities
 * Device is connected to app via wifi
 * Daily activity progress is sent to the OT for future planning
 * Activity data is displayed to caregiver by day / by activity
 * Daily activity progress is communicated to caregiver 
 * Goals can be set for each activity to motivate patient 
+
+### Installation Instructions
+Just drag and drop the MMDA-Project2 folder into your project in Xcode. OverTime OT requires the hardware necessary to collect 
+the data. The hardware consists of an Arduino, gyroscope, and accelerometer. OverTime OT is also dependent on a Heroku
+server for data persistence of the patient's statistics. 
+
+### Running Instructions
+Once the code is in Xcode, the app must be run on an iPhone 5S, either in the simulator or on a real iPhone. 
+The iPhone must be running iOS 8.1 or later.
+
+### Future Works
+Moving forward, the OverTime OT team wants to expand the app to include the following features:
+* Different app interface for the OT and the primary caregiver
+* Ability to track multiple motions at the same time
+* A system for OTs to have mutiple patients on the app, each with their own data
+* More comprehensive data overview
+* More accurate motion detection algorithm
+* More portable design of the hardware to allow for increased motion design
+
+### Known Bugs
+Currently no known bugs are present in the application. Further testing is required to guarantee
+the absence of bugs.
+
+### Open Source License
+MIT Open Source License
